@@ -37,7 +37,7 @@ function setupResources() {
             { name: "thema short" },
             { name: "thema full" },
             { name: "congraturation" },
-            { name: "panel Move" },
+            { name: "panel move" },
             { name: "station" },
             { name: "carrot" },
             { name: "crash" },
