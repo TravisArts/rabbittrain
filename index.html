@@ -1,0 +1,62 @@
+<html lang="en">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <link rel="preload" href="Charcoal.ttf" as="font">
+    <link rel="icon" href="Images/favicon.ico" type="image/x-icon">
+    <script type="text/javascript" src="JavaScript/Untitled.js"></script>
+    <script type="text/javascript" src="JavaScript/main.js"></script>
+    <script type="text/javascript" src="JavaScript/draw.js"></script>
+    <script type="text/javascript" src="JavaScript/inputs.js"></script>
+    <script type="text/javascript" src="JavaScript/objects.js"></script>
+    <script type="text/javascript" src="JavaScript/ion.sound.min.js"></script>
+    <title>Go!Go! Bunny Train</title>
+</head>
+
+<body>
+    <ul class="titleBar" id="titleBar">
+        <div id="loop" style="display:none;">Loop!!</div>
+        <li>
+            Stage: <span id="stage"></span>
+        </li>
+        <li>
+            Bonus: <span id="bonus"></span>
+        </li>
+        <li>
+            Score: <span id="score"></span>
+        </li>
+        <li>
+            <span id="carrots">
+                <div><img src="/Images/Sprites.png" class="carrot stat" /></div>
+                <div><img src="/Images/Sprites.png" class="carrot stat" /></div>
+            </span>
+            <span id="lives">
+                <div><img src="/Images/Sprites.png" class="life stat" /></div>
+                <div><img src="/Images/Sprites.png" class="life stat" /></div>
+                <div><img src="/Images/Sprites.png" class="life stat" /></div>
+                <div><img src="/Images/Sprites.png" class="life stat" /></div>
+                <div><img src="/Images/Sprites.png" class="life stat" /></div>
+            </span>
+        </li>
+    </ul>
+
+    <select name="dificulty" id="dificultySelector" onchange="selectDificulty()" onfocus="selectorActive()">
+        <option value="1">Easy</option>
+        <option value="2">Medium</option>
+        <option value="3">Hard</option>
+    </select>
+    <br>
+    <canvas id="hiddenCanvas" style="border:1px solid #000000;"></canvas>
+    <canvas id="canvas2" style="border:1px solid #000000; top: 100px;"></canvas>
+
+    <div class="hidden">
+        <canvas id="myCanvas" style="border:1px solid #000000;"></canvas>
+        <canvas id="rabbitCanvas" style="border:1px solid #000000;"></canvas>
+        <canvas id="spriteCanvas" style="border:1px solid #000000;"></canvas>
+    </div>
+    <br>
+    <br>
+</body>
+
+</html>
