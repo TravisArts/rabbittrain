@@ -152,8 +152,16 @@ function randomizeLayout() {
     glob47.width = glob57 * glob24 - 32
     glob47.height = glob58 * glob24 - 32
 
-    glob48.style.width = glob47.style.width
-    glob48.style.height = glob47.style.height
+    var w = Math.min(glob47.style.width ,window.innerWidth * 0.9)
+    var h = Math.min(glob47.style.height ,window.innerHeight * 0.75)
+    if (w == window.innerWidth * 0.9) {
+        h *= w/glob47.style.width
+    }
+    if (h == window.innerHeight * 0.75) {
+        w *= h/glob47.style.height
+    }
+    glob48.style.width = w
+    glob48.style.height = h
     glob48.width = glob47.width
     glob48.height = glob47.height
     // SetRect(&glob47, 0, 0, glob57*glob24-32, glob58*glob24-32);
