@@ -2,6 +2,7 @@
 
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no viewport-fit=cover">
     <link rel="stylesheet" type="text/css" href="style.css">
     <link rel="preload" href="Charcoal.ttf" as="font">
     <link rel="icon" href="Images/favicon.ico" type="image/x-icon">
@@ -15,37 +16,44 @@
 </head>
 
 <body>
-    <ul class="titleBar" id="titleBar">
+    <div class="titlebar">
         <div id="loop" style="display:none;">Loop!!</div>
-        <li>
-            Stage: <span id="stage"></span>
-        </li>
-        <li>
-            Bonus: <span id="bonus"></span>
-        </li>
-        <li>
-            Score: <span id="score"></span>
-        </li>
-        <li>
-            <span id="carrots">
-                <div><img src="Images/Sprites.png" class="carrot stat" /></div>
-                <div><img src="Images/Sprites.png" class="carrot stat" /></div>
-            </span>
-            <span id="lives">
-                <div><img src="Images/Sprites.png" class="life stat" /></div>
-                <div><img src="Images/Sprites.png" class="life stat" /></div>
-                <div><img src="Images/Sprites.png" class="life stat" /></div>
-                <div><img src="Images/Sprites.png" class="life stat" /></div>
-                <div><img src="Images/Sprites.png" class="life stat" /></div>
-            </span>
-        </li>
-    </ul>
+        <ul id="titleBar">
+            <li>
+                Stage: <span id="stage"></span>
+            </li>
+            <li>
+                Bonus: <span id="bonus"></span>
+            </li>
+            <li>
+                Score: <span id="score"></span>
+            </li>
+            <li id="sprites" style="float:right;">
+                <span id="carrots">
+                    <div><img src="Images/Sprites.png" class="carrot stat" /></div>
+                    <div><img src="Images/Sprites.png" class="carrot stat" /></div>
+                </span>
+                <span id="lives">
+                    <div><img src="Images/Sprites.png" class="life stat" /></div>
+                    <div><img src="Images/Sprites.png" class="life stat" /></div>
+                    <div><img src="Images/Sprites.png" class="life stat" /></div>
+                    <div><img src="Images/Sprites.png" class="life stat" /></div>
+                    <div><img src="Images/Sprites.png" class="life stat" /></div>
+                </span>
+            </li>
+        </ul>
+    </div>
 
-    <select name="dificulty" id="dificultySelector" onchange="selectDificulty()" onfocus="selectorActive()">
-        <option value="1">Easy</option>
-        <option value="2">Medium</option>
-        <option value="3">Hard</option>
-    </select>
+    <div id="controlls">
+
+        <select name="dificulty" id="dificultySelector" onchange="selectDificulty()" onfocus="selectorActive()">
+            <option value="1">Easy</option>
+            <option value="2">Medium</option>
+            <option value="3">Hard</option>
+        </select>
+        <button onclick="showHighScores()"> High Scores </button>
+
+    </div>
     <br>
     <canvas id="hiddenCanvas" style="border:1px solid #000000;"></canvas>
     <canvas id="canvas2" style="border:1px solid #000000; top: 100px;"></canvas>
@@ -57,6 +65,119 @@
     </div>
     <br>
     <br>
+    <div id="leaderboard">
+        <img src="Images/Hi-Score2.png" class="HS2" />
+        <img src="Images/Hi-Score2.png" class="HS2" />
+        <img src="Images/Hi-Score2.png" class="HS2" />
+        <img src="Images/Hi-Score2.png" class="HS2" />
+        <div id="score_title" style="">Best 10</div>
+        <img src="Images/Hi-Score1.png" class="HS1" />
+        <img src="Images/Hi-Score1.png" class="HS1" />
+        <img src="Images/Hi-Score1.png" class="HS1" />
+        <img src="Images/Hi-Score1.png" class="HS1" />
+
+        <table id="score_table">
+            <tr>
+                <th></th>
+                <th class="hsh_score">score</th>
+                <th class="hsh_stage">stage</th>
+                <th class="hsh_name">name</th>
+                <th class="hsh_date">date</th>
+                <th class="hsh_time">time</th>
+            </tr>
+            <tr>
+                <td>1</td>
+                <td class="hs_score"></td>
+                <td class="hs_stage">–</td>
+                <td class="hs_name">––</td>
+                <td class="hs_date">–</td>
+                <td class="hs_time">–</td>
+            </tr>
+            <tr>
+                <td>2</td>
+                <td class="hs_score"></td>
+                <td class="hs_stage">–</td>
+                <td class="hs_name">––</td>
+                <td class="hs_date">–</td>
+                <td class="hs_time">–</td>
+            </tr>
+            <tr>
+                <td>3</td>
+                <td class="hs_score"></td>
+                <td class="hs_stage">–</td>
+                <td class="hs_name">––</td>
+                <td class="hs_date">–</td>
+                <td class="hs_time">–</td>
+            </tr>
+            <tr>
+                <td>4</td>
+                <td class="hs_score"></td>
+                <td class="hs_stage">–</td>
+                <td class="hs_name">––</td>
+                <td class="hs_date">–</td>
+                <td class="hs_time">–</td>
+            </tr>
+            <tr>
+                <td>5</td>
+                <td class="hs_score"></td>
+                <td class="hs_stage">–</td>
+                <td class="hs_name">––</td>
+                <td class="hs_date">–</td>
+                <td class="hs_time">–</td>
+            </tr>
+            <tr>
+                <td>6</td>
+                <td class="hs_score"></td>
+                <td class="hs_stage">–</td>
+                <td class="hs_name">––</td>
+                <td class="hs_date">–</td>
+                <td class="hs_time">–</td>
+            </tr>
+            <tr>
+                <td>7</td>
+                <td class="hs_score"></td>
+                <td class="hs_stage">–</td>
+                <td class="hs_name">––</td>
+                <td class="hs_date">–</td>
+                <td class="hs_time">–</td>
+            </tr>
+            <tr>
+                <td>8</td>
+                <td class="hs_score"></td>
+                <td class="hs_stage">–</td>
+                <td class="hs_name">––</td>
+                <td class="hs_date">–</td>
+                <td class="hs_time">–</td>
+            </tr>
+            <tr>
+                <td>9</td>
+                <td class="hs_score"></td>
+                <td class="hs_stage">–</td>
+                <td class="hs_name">––</td>
+                <td class="hs_date">–</td>
+                <td class="hs_time">–</td>
+            </tr>
+            <tr>
+                <td>10</td>
+                <td class="hs_score"></td>
+                <td class="hs_stage">–</td>
+                <td class="hs_name">––</td>
+                <td class="hs_date">–</td>
+                <td class="hs_time">–</td>
+            </tr>
+        </table>
+
+        <div style="position:absolute;top:280px;left:98px;height:19px;">game type:
+            <select name="dificulty" id="scoreDificultySelector" onchange="scoreDificulty()">
+                <option value="1">Easy</option>
+                <option value="2">Medium</option>
+                <option value="3">Hard</option>
+            </select>
+            <button id="closeScore" onclick="dismissScores()">OK</button>
+        </div>
+    </div>
+
+
 </body>
 
 </html>

@@ -48,21 +48,32 @@ body {
     overflow: hidden;
     background-color: #FFF;
     text-align: center;
+    position: absolute;
+    width: 100%;
 }
 
-.titleBar li {
+#titleBar li {
     display: inline;
     /* color: #C6C9FE; */
     color: #000;
     text-align: center;
-    padding: 8px;
-    height: 40px;
+    padding: 0 8px;
+    /* height: 40px; */
     text-decoration: none;
+    float: left;
     /* -webkit-tap-highlight-color: #111111 */
 }
+#titleBar {
+    width: 600px;
+    margin: 0 auto;
+    padding: 0;
+    height: 22px;
+}
 
-#carrots div,
-#lives div {
+#sprites {
+    float: right;
+}
+#sprites * div {
     display: inline-block;
     width: 17px;
     height: 17px;
@@ -103,8 +114,192 @@ canvas {
     left: 0;
     text-align: center;
     z-index: 2;
-    /* height: 100%; */
+    height: 100%;
     width: 100%;
     position: absolute;
     background-color: red;
+}
+#loop span {
+    vertical-align: middle;
+}
+
+#leaderboard {
+    width: 366px;
+    height: 312px;
+    background-color: #FFF;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: none;
+}
+
+.HS2,
+.HS1 {
+    position: absolute;
+}
+.HS2:nth-child(1) {
+    top: 6px;
+    left: 12px;
+    width: 27px;
+    height: 40px;
+}
+.HS2:nth-child(2) {
+    top: 7px;
+    left: 39px;
+    width: 23px;
+    height: 35px;
+}
+.HS2:nth-child(3) {
+    top: 8px;
+    left: 63px;
+    width: 25px;
+    height: 34px;
+}
+.HS2:nth-child(4) {
+    top: 9px;
+    left: 90px;
+    width: 28px;
+    height: 36px;
+}
+
+.HS1:nth-child(6) {
+    top: 6px;
+    left: 240px;
+    width: 29px;
+    height: 38px;
+}
+.HS1:nth-child(7) {
+    top: 8px;
+    left: 266px;
+    width: 31px;
+    height: 36px;
+}
+.HS1:nth-child(8) {
+    top: 6px;
+    left: 294px;
+    width: 29px;
+    height: 38px;
+}
+.HS1:nth-child(9) {
+    top: 4px;
+    left: 321px;
+    width: 32px;
+    height: 45px;
+}
+
+#score_title {
+    font-size: 24px; 
+    position: absolute;
+    top: 13px;
+    left: 133px;
+}
+#score_table {
+    position: absolute;
+    top: 50px;
+    left: 13px;
+    height: 201px;
+    width: 345px;
+}
+th {
+    height: 18px;
+    font-size: 12px;
+}
+td {
+    font-size: 12px;
+    height: 18px;   
+}
+th, td {
+    /* border: 1px solid black; */
+}
+
+th:first-child, td:first-child {
+    width: 37px;
+}
+
+
+.hs_score,
+.hsh_score {
+    text-align: right;
+    width: 40px;
+}
+.hs_stage,
+.hsh_stage {
+    text-align: center;
+    width: 40px;
+}
+
+.hs_name {
+    width: 110px;
+}
+
+.hs_name,
+.hs_date,
+.hs_time,
+.hsh_name,
+.hsh_date,
+.hsh_time {
+    text-align: left;
+}
+
+#scoreDificultySelector {
+    /* position: absolute; */
+    display: inline;
+}
+#closeScore {
+    /* position: absolute; */
+    /* top: 280px;
+    left: 294px; */
+    height: 20px;
+    width: 60px;
+}
+#controlls {
+    position: absolute;
+    left: 50%;
+    top: 10%;
+    transform: translate(-50%, -50%);
+    width: 443px;
+    max-width: 90%;
+}
+#controlls * {
+    float: right;
+}
+
+
+@media screen and (max-width: 600px) {
+    #titleBar {
+        width: 100%;
+        margin: 0 auto;
+        padding: 0;
+        height: 44px;
+    }
+    
+    .titleBar {
+        font-size: 1em;
+    }
+
+    #sprites * div {
+        width: 32px;
+        height: 32px;
+    }
+    
+    #lives div img {
+        transform: translate(-74px,-160px);
+        clip: rect(160px, 96px, 192px, 64px);
+        /* clip: shape(top, right, bottom, left); NB 'rect' is the only available option */
+    }
+    #carrots div img {
+        transform: translate(-170px,-160px);
+        clip: rect(160px, 192px, 192px, 160px);
+        /* clip: shape(top, right, bottom, left); NB 'rect' is the only available option */
+    }
+    #loop {
+        font-size: 2em;
+    }
+}
+
+#hiddenCanvas {
+    position: absolute;
+    top: 37%;
+    transform: translate(-50%, -50%)
 }

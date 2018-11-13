@@ -307,3 +307,14 @@ function proc93() {
         glob175 = false;
     }
 }
+
+function dismissScores() {
+    document.getElementById("leaderboard").style.display = "none"
+    // updateInterval = setInterval(update, 1000 / 60)
+    proc54()
+}
+function showHighScores() {
+    // clearInterval(updateInterval)
+    proc53()
+    document.getElementById("leaderboard").style.display = "initial"
+}
