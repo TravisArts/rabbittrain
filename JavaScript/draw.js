@@ -605,7 +605,7 @@ function proc102() {
                         }
                         
                         if ( A5[i].shr1186 == 5) {
-                            A5[i] = A5[0].copy();
+                            A5[0] = A5[i].copy();
                             A5[0].shr1186 = 5;
                             A5[0].shr11AC = 46;
                         }

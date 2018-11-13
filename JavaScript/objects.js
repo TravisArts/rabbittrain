@@ -15,7 +15,7 @@ function structLen44() {
     this.lon1194        // long             // offset32//  time last updated
     this.shr1190        // long             // offset36//  time required to update
     this.lon118C        // long             // offset40//  speed
-    this.shr1188        // short            //  modifier
+    this.shr1188        // short            //  step in crash
     this.shr1186        // long             //         //          unknown
     this.offset44       // long
 };

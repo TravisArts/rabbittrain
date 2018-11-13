@@ -368,6 +368,7 @@ function proc37() {
     glob7 = proc100();
     proc98();
     proc66();
+    proc142();
 
     if (glob160) {
         glob27 = true;
@@ -837,7 +838,7 @@ function proc26() {
 
     // check if 2 carts crash into each other
     for (var i = 2; i < 8; i++) {
-        for (var j = 1; j < 9; j++) {
+        for (var j = i+1; j < 9; j++) {
             if (A5[i].offset0 == true && A5[j].offset0 == true) {
                 if (A5[i].shr1188 != 0 && A5[j].shr1188 == 0) {
 
