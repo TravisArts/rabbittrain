@@ -300,6 +300,7 @@ th:first-child, td:first-child {
 
 #hiddenCanvas {
     position: absolute;
-    top: 37%;
+    top: 50%;
+    max-width: 90%;
     transform: translate(-50%, -50%)
 }

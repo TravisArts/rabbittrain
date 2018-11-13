@@ -89,20 +89,20 @@ function data17(clickPoint) {
     minMovableH = glob24 - 16;
     maxMovableH = (glob57 - 2) * glob24 + minMovableH;
 
-    if (clickPoint.layerX <= minMovableV)
+    if (clickPoint.offsetX <= minMovableV)
         return;
 
-    if (clickPoint.layerY >= maxMovableV)
+    if (clickPoint.offsetY >= maxMovableV)
         return;
 
-    if (clickPoint.layerX <= minMovableH)
+    if (clickPoint.offsetX <= minMovableH)
         return;
 
-    if (clickPoint.layerY >= maxMovableH)
+    if (clickPoint.offsetY >= maxMovableH)
         return;
 
-    var index = Math.floor((clickPoint.layerX - minMovableH) / glob24 + 1)
-    var row = Math.floor((clickPoint.layerY - minMovableV) / glob24 + 1)
+    var index = Math.floor((clickPoint.offsetX - minMovableH) / glob24 + 1)
+    var row = Math.floor((clickPoint.offsetY - minMovableV) / glob24 + 1)
 
     for (direction = 0; direction < 4; direction++) {
         var nextRow = row + ptArr[direction].y;

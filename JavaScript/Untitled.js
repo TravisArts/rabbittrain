@@ -98,8 +98,8 @@ window.onload = function () {
     glob55b.height = 32
 
 
-    glob47.addEventListener("mousedown", this.data17, false);
-    glob47.addEventListener("touchdown", this.data17, false);
+    glob48.addEventListener("mousedown", this.data17, false);
+    glob48.addEventListener("touchdown", this.data17, false);
 
     setup()
 
@@ -1819,4 +1819,8 @@ function proc96() {
 
 function DisposeWindow(window) {
     window.style.display = "none"
+}
+
+function proc42() {
+    showHighScores()
 }
