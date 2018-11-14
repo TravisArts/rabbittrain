@@ -147,19 +147,33 @@ function randomizeLayout() {
     index = 60;
     glob59 = (levelArray[index] << 8) + levelArray[index + 1];
 
-    glob47.style.width = glob57 * glob24 - 32 + "px"
-    glob47.style.height = glob58 * glob24 - 32 + "px"
-    glob47.width = glob57 * glob24 - 32
-    glob47.height = glob58 * glob24 - 32
+    var w = glob57 * glob24 - 32
+    var h = glob58 * glob24 - 32
+    glob47.style.width = w
+    glob47.style.height = h
+    glob47.width = w
+    glob47.height = h
 
-    var w = Math.min(glob47.style.width, window.innerWidth * 0.9)
-    var h = Math.min(glob47.style.height, window.innerHeight * 0.75)
-    if (w == window.innerWidth * 0.9) {
-        h *= w / glob47.style.width
+
+    var container = document.getElementById("container")
+    // var w = Math.min(container.offsetWidth, glob47.style.width)
+    // var h = glob47.style.height
+    if ( container.offsetWidth < w ) {
+        h *= container.offsetWidth / w
+        w = container.offsetWidth
     }
-    if (h == window.innerHeight * 0.75) {
-        w *= h / glob47.style.height
-    }
+    console.log("glob47 width: " + glob47.style.width)
+    console.log("container width: " + container.offsetWidth)
+    console.log("w: " + w)
+
+    // var w = Math.min(glob47.style.width, window.innerWidth * 0.9)
+    // var h = Math.min(glob47.style.height, window.innerHeight * 0.75)
+    // if (w == window.innerWidth * 0.9) {
+    //     h *= w / glob47.style.width
+    // }
+    // if (h == window.innerHeight * 0.75) {
+    //     w *= h / glob47.style.height
+    // }
     glob48.style.width = w
     glob48.style.height = h
     glob48.width = glob47.width
@@ -312,7 +326,7 @@ function proc110(param1) {
 
         if (result) {
             result = proc106(param1);
-            console.log("proc106(param1) = " + result)
+            // console.log("proc106(param1) = " + result)
         }
 
 
