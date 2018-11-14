@@ -124,10 +124,11 @@ body {
     height: 312px;
     background-color: #FFF;
     position: absolute;
-    top: 50%;
+    top: 33%;
     left: 50%;
     transform: translate(-50%, -50%);
     display: none;
+    z-index: 50;
 }
 
 .HS2,

@@ -1832,30 +1832,30 @@ function DisposeWindow(window) {
 
 function proc42() {
 
-    var dificultyName
-    switch (glob39) {
-        case 1:
-        dificultyName = "Easy"
-            break;
-        case 2:
-        dificultyName = "Medium"
-            break;
-        case 3:
-        dificultyName = "Hard"
-            break;
+    // var dificultyName
+    // switch (glob39) {
+    //     case 1:
+    //     dificultyName = "Easy"
+    //         break;
+    //     case 2:
+    //     dificultyName = "Medium"
+    //         break;
+    //     case 3:
+    //     dificultyName = "Hard"
+    //         break;
 
-        default:
-            break;
-    }
+    //     default:
+    //         break;
+    // }
 
-    FBInstant
-        .getLeaderboardAsync(dificultyName + '.' + FBInstant.context.getID())
-        .then(leaderboard => {
-            console.log(leaderboard.getName());
-            return leaderboard.setScoreAsync(glob31, '{ stage: 3}');
-        })
-        .then(() => console.log('Score saved'))
-        .catch(error => console.error(error));
+    // FBInstant
+    //     .getLeaderboardAsync(dificultyName + '.' + FBInstant.context.getID())
+    //     .then(leaderboard => {
+    //         console.log(leaderboard.getName());
+    //         return leaderboard.setScoreAsync(glob31, '{ stage: 3}');
+    //     })
+    //     .then(() => console.log('Score saved'))
+    //     .catch(error => console.error(error));
 
 
     showHighScores()
