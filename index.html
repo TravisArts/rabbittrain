@@ -3,6 +3,13 @@
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no viewport-fit=cover">
+
+    <meta property="og:url" content="https://travisarts.github.io/rabbittrain/" />
+    <meta property="og:type" content="" />
+    <meta property="og:title" content="Go!Go! Bunny Train" />
+    <meta property="og:description" content="Despite the relaxed the atmosphere, it can be a difficult puzzle game." />
+    <!-- <meta property="og:image" content="http://static01.nyt.com/images/2015/02/19/arts/international/19iht-btnumbers19A/19iht-btnumbers19A-facebookJumbo-v2.jpg" /> -->
+
     <link rel="stylesheet" type="text/css" href="style.css">
     <link rel="preload" href="Charcoal.ttf" as="font">
     <link rel="icon" href="Images/favicon.ico" type="image/x-icon">
@@ -18,11 +25,21 @@
 
 <body>
     <div id="fb-root"></div>
-    <script>(function (d, s, id) {
+    <script>
+        window.fbAsyncInit = function () {
+            FB.init({
+                appId: '1922117394546392',
+                xfbml: true,
+                version: 'v3.2'
+            });
+            FB.AppEvents.logPageView();
+        };
+
+        (function (d, s, id) {
             var js, fjs = d.getElementsByTagName(s)[0];
-            if (d.getElementById(id)) return;
+            if (d.getElementById(id)) { return; }
             js = d.createElement(s); js.id = id;
-            js.src = 'https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v3.2&appId=1922117394546392&autoLogAppEvents=1';
+            js.src = "https://connect.facebook.net/en_US/sdk.js";
             fjs.parentNode.insertBefore(js, fjs);
         }(document, 'script', 'facebook-jssdk'));
 
@@ -199,6 +216,10 @@
         <div id="social">
             <div class="fb-like" data-href="https://developers.facebook.com/docs/plugins/" data-layout="button_count"
                 data-action="like" data-size="large" data-show-faces="true" data-share="true"></div>
+            <a href="https://twitter.com/share?ref_src=twsrc%5Etfw" class="twitter-share-button" data-size="large"
+                data-text="Check out Go!Go! Bunny Train. Try to get the carrot, but don&#39;t crash" data-hashtags="rabbittrain"
+                data-show-count="false">Tweet</a>
+            <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
         </div>
 
     </div>
