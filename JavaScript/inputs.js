@@ -316,5 +316,36 @@ function dismissScores() {
 function showHighScores() {
     // clearInterval(updateInterval)
     proc53()
+
+    var dificultyName
+    switch (glob39) {
+        case 1:
+            dificultyName = "Easy"
+            break;
+        case 2:
+            dificultyName = "Medium"
+            break;
+        case 3:
+            dificultyName = "Hard"
+            break;
+
+        default:
+            break;
+    }
+
+
+    FBInstant
+        .getLeaderboardAsync(dificultyName + '.' + FBInstant.context.getID())
+        .then(leaderboard => leaderboard.getEntriesAsync(10, 0))
+        .then(entries => {
+            for (var i = 0; i < entries.length; i++) {
+                console.log(
+                    entries[i].getRank() + '. ' +
+                    entries[i].getPlayer().getName() + ': ' +
+                    entries[i].getScore()
+                );
+            }
+        }).catch(error => console.error(error));
+
     document.getElementById("leaderboard").style.display = "initial"
 }

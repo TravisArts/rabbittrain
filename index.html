@@ -13,28 +13,26 @@
     <script type="text/javascript" src="JavaScript/objects.js"></script>
     <script type="text/javascript" src="JavaScript/ion.sound.min.js"></script>
     <title>Go!Go! Bunny Train</title>
-
+    <script src="https://connect.facebook.net/en_US/fbinstant.6.2.js"></script>
 </head>
 
 <body>
-    <script>
-            window.fbAsyncInit = function() {
-              FB.init({
-                appId      : '1922117394546392',
-                xfbml      : true,
-                version    : 'v3.2'
-              });
-              FB.AppEvents.logPageView();
-            };
-          
-            (function(d, s, id){
-               var js, fjs = d.getElementsByTagName(s)[0];
-               if (d.getElementById(id)) {return;}
-               js = d.createElement(s); js.id = id;
-               js.src = "https://connect.facebook.net/en_US/sdk.js";
-               fjs.parentNode.insertBefore(js, fjs);
-             }(document, 'script', 'facebook-jssdk'));
-          </script>
+    <div id="fb-root"></div>
+    <script>(function (d, s, id) {
+            var js, fjs = d.getElementsByTagName(s)[0];
+            if (d.getElementById(id)) return;
+            js = d.createElement(s); js.id = id;
+            js.src = 'https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v3.2&appId=1922117394546392&autoLogAppEvents=1';
+            fjs.parentNode.insertBefore(js, fjs);
+        }(document, 'script', 'facebook-jssdk'));
+
+        FBInstant.initializeAsync()
+            .then(function () {
+                // Start loading game assets here
+            });
+    </script>
+
+
     <div class="titlebar">
         <div id="loop" style="display:none;">Loop!!</div>
         <ul id="titleBar">
@@ -63,140 +61,147 @@
         </ul>
     </div>
 
-    <div id="controlls">
+    <div id="container">
 
-        <select name="dificulty" id="dificultySelector" onchange="selectDificulty()" onfocus="selectorActive()">
-            <option value="1">Easy</option>
-            <option value="2">Medium</option>
-            <option value="3">Hard</option>
-        </select>
-        <button onclick="showHighScores()"> High Scores </button>
+        <div id="controlls">
 
-    </div>
-    <br>
-    <canvas id="hiddenCanvas" style="border:1px solid #000000;"></canvas>
-    <canvas id="canvas2" style="border:1px solid #000000; top: 100px;"></canvas>
-
-    <div class="hidden">
-        <canvas id="myCanvas" style="border:1px solid #000000;"></canvas>
-        <canvas id="rabbitCanvas" style="border:1px solid #000000;"></canvas>
-        <canvas id="spriteCanvas" style="border:1px solid #000000;"></canvas>
-    </div>
-    <br>
-    <br>
-    <div id="leaderboard">
-        <img src="Images/Hi-Score2.png" class="HS2" />
-        <img src="Images/Hi-Score2.png" class="HS2" />
-        <img src="Images/Hi-Score2.png" class="HS2" />
-        <img src="Images/Hi-Score2.png" class="HS2" />
-        <div id="score_title" style="">Best 10</div>
-        <img src="Images/Hi-Score1.png" class="HS1" />
-        <img src="Images/Hi-Score1.png" class="HS1" />
-        <img src="Images/Hi-Score1.png" class="HS1" />
-        <img src="Images/Hi-Score1.png" class="HS1" />
-
-        <table id="score_table">
-            <tr>
-                <th></th>
-                <th class="hsh_score">score</th>
-                <th class="hsh_stage">stage</th>
-                <th class="hsh_name">name</th>
-                <th class="hsh_date">date</th>
-                <th class="hsh_time">time</th>
-            </tr>
-            <tr>
-                <td>1</td>
-                <td class="hs_score"></td>
-                <td class="hs_stage">–</td>
-                <td class="hs_name">––</td>
-                <td class="hs_date">–</td>
-                <td class="hs_time">–</td>
-            </tr>
-            <tr>
-                <td>2</td>
-                <td class="hs_score"></td>
-                <td class="hs_stage">–</td>
-                <td class="hs_name">––</td>
-                <td class="hs_date">–</td>
-                <td class="hs_time">–</td>
-            </tr>
-            <tr>
-                <td>3</td>
-                <td class="hs_score"></td>
-                <td class="hs_stage">–</td>
-                <td class="hs_name">––</td>
-                <td class="hs_date">–</td>
-                <td class="hs_time">–</td>
-            </tr>
-            <tr>
-                <td>4</td>
-                <td class="hs_score"></td>
-                <td class="hs_stage">–</td>
-                <td class="hs_name">––</td>
-                <td class="hs_date">–</td>
-                <td class="hs_time">–</td>
-            </tr>
-            <tr>
-                <td>5</td>
-                <td class="hs_score"></td>
-                <td class="hs_stage">–</td>
-                <td class="hs_name">––</td>
-                <td class="hs_date">–</td>
-                <td class="hs_time">–</td>
-            </tr>
-            <tr>
-                <td>6</td>
-                <td class="hs_score"></td>
-                <td class="hs_stage">–</td>
-                <td class="hs_name">––</td>
-                <td class="hs_date">–</td>
-                <td class="hs_time">–</td>
-            </tr>
-            <tr>
-                <td>7</td>
-                <td class="hs_score"></td>
-                <td class="hs_stage">–</td>
-                <td class="hs_name">––</td>
-                <td class="hs_date">–</td>
-                <td class="hs_time">–</td>
-            </tr>
-            <tr>
-                <td>8</td>
-                <td class="hs_score"></td>
-                <td class="hs_stage">–</td>
-                <td class="hs_name">––</td>
-                <td class="hs_date">–</td>
-                <td class="hs_time">–</td>
-            </tr>
-            <tr>
-                <td>9</td>
-                <td class="hs_score"></td>
-                <td class="hs_stage">–</td>
-                <td class="hs_name">––</td>
-                <td class="hs_date">–</td>
-                <td class="hs_time">–</td>
-            </tr>
-            <tr>
-                <td>10</td>
-                <td class="hs_score"></td>
-                <td class="hs_stage">–</td>
-                <td class="hs_name">––</td>
-                <td class="hs_date">–</td>
-                <td class="hs_time">–</td>
-            </tr>
-        </table>
-
-        <div style="position:absolute;top:280px;left:98px;height:19px;">game type:
-            <select name="dificulty" id="scoreDificultySelector" onchange="scoreDificulty()">
+            <select name="dificulty" id="dificultySelector" onchange="selectDificulty()" onfocus="selectorActive()">
                 <option value="1">Easy</option>
                 <option value="2">Medium</option>
                 <option value="3">Hard</option>
             </select>
-            <button id="closeScore" onclick="dismissScores()">OK</button>
+            <button onclick="showHighScores()"> High Scores </button>
+
         </div>
+        <br>
+        <canvas id="hiddenCanvas" style="border:1px solid #000000;"></canvas>
+        <canvas id="canvas2" style="border:1px solid #000000; top: 100px;"></canvas>
+
+        <div class="hidden">
+            <canvas id="myCanvas" style="border:1px solid #000000;"></canvas>
+            <canvas id="rabbitCanvas" style="border:1px solid #000000;"></canvas>
+            <canvas id="spriteCanvas" style="border:1px solid #000000;"></canvas>
+        </div>
+        <br>
+        <br>
+        <div id="leaderboard">
+            <img src="Images/Hi-Score2.png" class="HS2" />
+            <img src="Images/Hi-Score2.png" class="HS2" />
+            <img src="Images/Hi-Score2.png" class="HS2" />
+            <img src="Images/Hi-Score2.png" class="HS2" />
+            <div id="score_title" style="">Best 10</div>
+            <img src="Images/Hi-Score1.png" class="HS1" />
+            <img src="Images/Hi-Score1.png" class="HS1" />
+            <img src="Images/Hi-Score1.png" class="HS1" />
+            <img src="Images/Hi-Score1.png" class="HS1" />
+
+            <table id="score_table">
+                <tr>
+                    <th></th>
+                    <th class="hsh_score">score</th>
+                    <th class="hsh_stage">stage</th>
+                    <th class="hsh_name">name</th>
+                    <th class="hsh_date">date</th>
+                    <th class="hsh_time">time</th>
+                </tr>
+                <tr>
+                    <td>1</td>
+                    <td class="hs_score"></td>
+                    <td class="hs_stage">–</td>
+                    <td class="hs_name">––</td>
+                    <td class="hs_date">–</td>
+                    <td class="hs_time">–</td>
+                </tr>
+                <tr>
+                    <td>2</td>
+                    <td class="hs_score"></td>
+                    <td class="hs_stage">–</td>
+                    <td class="hs_name">––</td>
+                    <td class="hs_date">–</td>
+                    <td class="hs_time">–</td>
+                </tr>
+                <tr>
+                    <td>3</td>
+                    <td class="hs_score"></td>
+                    <td class="hs_stage">–</td>
+                    <td class="hs_name">––</td>
+                    <td class="hs_date">–</td>
+                    <td class="hs_time">–</td>
+                </tr>
+                <tr>
+                    <td>4</td>
+                    <td class="hs_score"></td>
+                    <td class="hs_stage">–</td>
+                    <td class="hs_name">––</td>
+                    <td class="hs_date">–</td>
+                    <td class="hs_time">–</td>
+                </tr>
+                <tr>
+                    <td>5</td>
+                    <td class="hs_score"></td>
+                    <td class="hs_stage">–</td>
+                    <td class="hs_name">––</td>
+                    <td class="hs_date">–</td>
+                    <td class="hs_time">–</td>
+                </tr>
+                <tr>
+                    <td>6</td>
+                    <td class="hs_score"></td>
+                    <td class="hs_stage">–</td>
+                    <td class="hs_name">––</td>
+                    <td class="hs_date">–</td>
+                    <td class="hs_time">–</td>
+                </tr>
+                <tr>
+                    <td>7</td>
+                    <td class="hs_score"></td>
+                    <td class="hs_stage">–</td>
+                    <td class="hs_name">––</td>
+                    <td class="hs_date">–</td>
+                    <td class="hs_time">–</td>
+                </tr>
+                <tr>
+                    <td>8</td>
+                    <td class="hs_score"></td>
+                    <td class="hs_stage">–</td>
+                    <td class="hs_name">––</td>
+                    <td class="hs_date">–</td>
+                    <td class="hs_time">–</td>
+                </tr>
+                <tr>
+                    <td>9</td>
+                    <td class="hs_score"></td>
+                    <td class="hs_stage">–</td>
+                    <td class="hs_name">––</td>
+                    <td class="hs_date">–</td>
+                    <td class="hs_time">–</td>
+                </tr>
+                <tr>
+                    <td>10</td>
+                    <td class="hs_score"></td>
+                    <td class="hs_stage">–</td>
+                    <td class="hs_name">––</td>
+                    <td class="hs_date">–</td>
+                    <td class="hs_time">–</td>
+                </tr>
+            </table>
+
+            <div style="position:absolute;top:280px;left:98px;height:19px;">game type:
+                <select name="dificulty" id="scoreDificultySelector" onchange="scoreDificulty()">
+                    <option value="1">Easy</option>
+                    <option value="2">Medium</option>
+                    <option value="3">Hard</option>
+                </select>
+                <button id="closeScore" onclick="dismissScores()">OK</button>
+            </div>
+        </div>
+
+        <div id="social">
+            <div class="fb-like" data-href="https://developers.facebook.com/docs/plugins/" data-layout="button_count"
+                data-action="like" data-size="large" data-show-faces="true" data-share="true"></div>
+        </div>
+
     </div>
-
-
 </body>
 
 </html>

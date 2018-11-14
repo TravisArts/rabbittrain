@@ -152,13 +152,13 @@ function randomizeLayout() {
     glob47.width = glob57 * glob24 - 32
     glob47.height = glob58 * glob24 - 32
 
-    var w = Math.min(glob47.style.width ,window.innerWidth * 0.9)
-    var h = Math.min(glob47.style.height ,window.innerHeight * 0.75)
+    var w = Math.min(glob47.style.width, window.innerWidth * 0.9)
+    var h = Math.min(glob47.style.height, window.innerHeight * 0.75)
     if (w == window.innerWidth * 0.9) {
-        h *= w/glob47.style.width
+        h *= w / glob47.style.width
     }
     if (h == window.innerHeight * 0.75) {
-        w *= h/glob47.style.height
+        w *= h / glob47.style.height
     }
     glob48.style.width = w
     glob48.style.height = h
@@ -838,7 +838,7 @@ function proc26() {
 
     // check if 2 carts crash into each other
     for (var i = 2; i < 8; i++) {
-        for (var j = i+1; j < 9; j++) {
+        for (var j = i + 1; j < 9; j++) {
             if (A5[i].offset0 == true && A5[j].offset0 == true) {
                 if (A5[i].shr1188 != 0 && A5[j].shr1188 == 0) {
 
@@ -1043,7 +1043,7 @@ function proc104(param1, value) {
     } else {
         D7 = 60;
     }
-    if ( !(D7 <= 60) ) {
+    if (!(D7 <= 60)) {
         console.log(D7)
     }
 
@@ -1831,5 +1831,32 @@ function DisposeWindow(window) {
 }
 
 function proc42() {
+
+    var dificultyName
+    switch (glob39) {
+        case 1:
+        dificultyName = "Easy"
+            break;
+        case 2:
+        dificultyName = "Medium"
+            break;
+        case 3:
+        dificultyName = "Hard"
+            break;
+
+        default:
+            break;
+    }
+
+    FBInstant
+        .getLeaderboardAsync(dificultyName + '.' + FBInstant.context.getID())
+        .then(leaderboard => {
+            console.log(leaderboard.getName());
+            return leaderboard.setScoreAsync(glob31, '{ stage: 3}');
+        })
+        .then(() => console.log('Score saved'))
+        .catch(error => console.error(error));
+
+
     showHighScores()
 }
