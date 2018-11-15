@@ -115,7 +115,10 @@ let levelLayouts = [
     Layout8
 ]
 
-
+//シュッポッ、シュッポッ、シュッポッポッ。シュッポッ、シュッポッ、シュッポッポッ。
+//うーさちゃん列車がはしってる。にんじん取れるかな。
+//うーさちゃん列車が
+//うさちゃん列車が
 let lyrics = [
     "シュッポッ、シュッポッ",
     "シュッポッポッ。",
@@ -126,6 +129,16 @@ let lyrics = [
     "はしってる。",
     "にんじん",
     "取れるかな。"
+]
+let lyricsEng = [
+    "Shuppo, Shuppo",
+    "Shuppoppo.",
+    "Shuppo, Shuppo",
+    "Shuppoppo.",
+    "Bunny train is",
+    "running. lets see",
+    "if you can take the",
+    "carrot."
 ]
 
 
@@ -250,6 +263,9 @@ var glob190;    // x to close
 var glob191;    // y to close
 var glob192 //= new Rect(0,0,0,0)
 var glob193 //= new Rect(0,0,0,0)
+
+
+var glob196     // theme
 
 var pen
 

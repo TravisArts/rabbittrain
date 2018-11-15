@@ -14,8 +14,12 @@
     <link rel="stylesheet" type="text/css" href="style.css">
     <link rel="preload" href="Charcoal.ttf" as="font">
     <link rel="icon" href="Images/favicon.ico" type="image/x-icon">
-    <script type="text/javascript" src="JavaScript/Untitled.js"></script>
+    <!-- <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"> -->
+    
+
     <script type="text/javascript" src="JavaScript/main.js"></script>
+    <script type="text/javascript" src="JavaScript/Cookies.js"></script>
+    <script type="text/javascript" src="JavaScript/Untitled.js"></script>
     <script type="text/javascript" src="JavaScript/draw.js"></script>
     <script type="text/javascript" src="JavaScript/inputs.js"></script>
     <script type="text/javascript" src="JavaScript/objects.js"></script>
@@ -49,7 +53,7 @@
                 // Start loading game assets here
             });
     </script> -->
-    <div id="fb-root"></div>
+    <!-- <div id="fb-root"></div>
     <script>(function (d, s, id) {
             var js, fjs = d.getElementsByTagName(s)[0];
             if (d.getElementById(id)) return;
@@ -57,7 +61,7 @@
             js.src = 'https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v3.2&appId=1922117394546392&autoLogAppEvents=1';
             fjs.parentNode.insertBefore(js, fjs);
         }(document, 'script', 'facebook-jssdk'));
-    </script>
+    </script> -->
 
 
     <div class="titlebar">
@@ -98,6 +102,8 @@
                 <option value="3">Hard</option>
             </select>
             <button onclick="showHighScores()"> High Scores </button>
+            <button onclick="muteButtonPress()"><i class="icons" id="muteIcon"></i></button>
+            <button onclick="musicButtonPress()"><i class="icons" id="musicIcon"></i></button>
 
         </div>
         <br>

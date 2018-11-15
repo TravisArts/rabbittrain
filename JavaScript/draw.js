@@ -740,6 +740,7 @@ function proc76() {
     //    InsetRect(&rect, -20, 0);
 
     lyricWindow = document.getElementById("canvas2")
+    lyricWindow.style.display = "block"
     var ctx2 = lyricWindow.getContext("2d");
 
     lyricWindow.width = rect.w * 2
@@ -776,12 +777,13 @@ function proc76() {
 
     var lyricNumber = 0;
 
-    lyricStr = lyrics[lyricNumber]
+    // lyricStr = lyrics[lyricNumber]
+    lyricStr = lyricsEng[lyricNumber]
     ctx2.textAlign = "center";
     ctx2.fillText(lyricStr, 156, 328)
     Tcnt = TickCount;
 
-    // proc139(1); // full theme
+    proc139(1); // full theme
 
     //     Rect clearRect;
 
@@ -808,7 +810,8 @@ function proc76() {
         ctx2.fillStyle = "#7F0614"
 
 
-        lyricStr = lyrics[lyricNumber]
+        // lyricStr = lyrics[lyricNumber]
+        lyricStr = lyricsEng[lyricNumber]
         // ctx2.textAlign = "center";
         ctx2.fillText(lyricStr, 156, 328)
 
@@ -825,10 +828,13 @@ function proc76() {
         // DrawString(lyricStr);
         if (lyricNumber > 7) {
             clearInterval(changeLyrics)
-            setup()
-            glob28 = true;
         }
-    }, 833)
+    }, 1000)//833)
+    setTimeout(function () {
+        setup()
+            glob28 = true;
+            lyricWindow.style.display = "none"
+    }, 8000);
 
 }
 

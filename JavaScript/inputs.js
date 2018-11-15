@@ -156,7 +156,7 @@ let sounds = [
     "thema short",
     "thema full",
     "congraturation",
-    "panel Move",
+    "panel move",
     "station",
     "carrot",
     "crash",
@@ -170,6 +170,7 @@ function proc139(sndID) {
     // console.log(sound)
     // document.getElementById(sound).cloneNode(true).play()
     ion.sound.play(sound);
+    console.log("playing " + sound)
 }
 
 
@@ -348,4 +349,15 @@ function showHighScores() {
     //     }).catch(error => console.error(error));
 
     // document.getElementById("leaderboard").style.display = "initial"
+}
+
+function muteButtonPress() {
+    console.log("glob183 = " + glob183)
+    setSound(!glob183)
+    document.getElementById("muteIcon").innerText = glob183 ? "volume_up" : "volume_off"
+}
+
+function musicButtonPress() {
+    setMusic(!glob29)
+    document.getElementById("musicIcon").innerText = glob29 ? "music_note" : "music_off"
 }

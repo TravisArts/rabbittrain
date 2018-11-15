@@ -49,8 +49,10 @@ function setupResources() {
         path: "Sound/",
         preload: true,
         multiplay: true,
-        volume: 0.9
+        volume: 1 //0.9
     });
+
+    loadSettings()
 }
 
 
@@ -62,7 +64,7 @@ document.addEventListener("readystatechange", function () {
         setupResources()
         // for (var i = 0; i < 9; i++) {
         //     A5[i] = new structLen44()
-        // }
+        // } 
     }
 })
 
@@ -162,18 +164,7 @@ function randomizeLayout() {
         h *= container.offsetWidth / w
         w = container.offsetWidth
     }
-    console.log("glob47 width: " + glob47.style.width)
-    console.log("container width: " + container.offsetWidth)
-    console.log("w: " + w)
 
-    // var w = Math.min(glob47.style.width, window.innerWidth * 0.9)
-    // var h = Math.min(glob47.style.height, window.innerHeight * 0.75)
-    // if (w == window.innerWidth * 0.9) {
-    //     h *= w / glob47.style.width
-    // }
-    // if (h == window.innerHeight * 0.75) {
-    //     w *= h / glob47.style.height
-    // }
     glob48.style.width = w
     glob48.style.height = h
     glob48.width = glob47.width
@@ -903,7 +894,6 @@ function proc100() {
         glob159 = false;
 
         while (proc106(glob167) && D7 < 50 && !glob159) {
-            console.log("glob64 = 0")
             if (glob163.offset2 == glob167.offset2 && glob163.offset4 == glob167.offset4 && glob163.offset6 == glob167.offset6) {
                 glob159 = true;
             }
