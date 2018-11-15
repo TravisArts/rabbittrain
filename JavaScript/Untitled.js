@@ -753,8 +753,10 @@ function proc108() {
 function proc25() {
     for (var i = 2; i < 9; i++) {
         if (A5[i].offset0 == true) {
-            if (A5[1].offset16.left < A5[i].offset16.left + 12 && A5[1].offset16.left > A5[i].offset16.left - 12) {
-                if (A5[1].offset16.top < A5[i].offset16.top + 14 && A5[1].offset16.top > A5[i].offset16.top - 14) {
+            var playerRect = A5[1].offset16
+            var reci = A5[i].offset16
+            if (playerRect.left < reci.left + 12 && playerRect.left > reci.left - 12) {
+                if (playerRect.top < reci.top + 14 && playerRect.top > reci.top - 14) {
                     glob160 = true; // crash
                     proc139(6); // crash sound
                     A5[i].shr1188 = 1;
@@ -845,14 +847,14 @@ function proc26() {
     for (var i = 2; i < 8; i++) {
         for (var j = i + 1; j < 9; j++) {
             if (A5[i].offset0 == true && A5[j].offset0 == true) {
-                if (A5[i].shr1188 != 0 && A5[j].shr1188 == 0) {
+                if (A5[i].shr1188 == 0 && A5[j].shr1188 == 0) {
 
                     var reci, recj;
                     reci = A5[i].offset16;
                     recj = A5[j].offset16;
 
-                    if (recj.left - 12 < reci.left && reci.left < recj.left + 12) {
-                        if (recj.top - 14 < reci.top && reci.top < recj.top + 14) {
+                    if (recj.left < reci.left + 12 && recj.left > reci.left - 12) {
+                        if (recj.top < reci.top + 14 && recj.top > reci.top - 14) {
                             proc139(6); // crash sound
                             A5[i].shr1188 = 1;
                             A5[j].shr1188 = 1;
