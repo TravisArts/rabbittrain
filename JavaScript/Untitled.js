@@ -100,8 +100,8 @@ window.onload = function () {
     glob55b.height = 32
 
 
-    glob48.addEventListener("mousedown", this.data17, false);
-    glob48.addEventListener("touchdown", this.data17, false);
+    setupControlls()
+      
 
     setup()
 

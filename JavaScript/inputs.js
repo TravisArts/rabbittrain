@@ -77,7 +77,7 @@ function up(e) {
 
 function data17(clickPoint) {
     //    long D0;
-    console.log(clickPoint)
+    // console.log(clickPoint)
     var minMovableV,
         maxMovableV,
         minMovableH,
@@ -89,20 +89,20 @@ function data17(clickPoint) {
     minMovableH = glob24 - 16;
     maxMovableH = (glob57 - 2) * glob24 + minMovableH;
 
-    if (clickPoint.offsetX <= minMovableV)
+    if (clickPoint.layerX <= minMovableV)
         return;
 
-    if (clickPoint.offsetY >= maxMovableV)
+    if (clickPoint.layerY >= maxMovableV)
         return;
 
-    if (clickPoint.offsetX <= minMovableH)
+    if (clickPoint.layerX <= minMovableH)
         return;
 
-    if (clickPoint.offsetY >= maxMovableH)
+    if (clickPoint.layerY >= maxMovableH)
         return;
 
-    var index = Math.floor((clickPoint.offsetX - minMovableH) / glob24 + 1)
-    var row = Math.floor((clickPoint.offsetY - minMovableV) / glob24 + 1)
+    var index = Math.floor((clickPoint.layerX - minMovableH) / glob24 + 1)
+    var row = Math.floor((clickPoint.layerY - minMovableV) / glob24 + 1)
 
     for (direction = 0; direction < 4; direction++) {
         var nextRow = row + ptArr[direction].y;
@@ -361,3 +361,65 @@ function musicButtonPress() {
     setMusic(!glob29)
     document.getElementById("musicIcon").innerText = glob29 ? "music_note" : "music_off"
 }
+
+
+var touchStartClientX, touchStartClientY;
+
+function setupControlls() {
+
+    glob48.addEventListener("mousedown", this.data17, false);
+
+    glob48.addEventListener("touchstart", function (event) {
+        // e.preventDefault();
+        // data17(e)
+
+        if ((!window.navigator.msPointerEnabled && event.touches.length > 1)
+            || event.targetTouches.length > 1) {
+            return; // Ignore if touching with more than 1 finger or touching input
+        }
+        if (window.navigator.msPointerEnabled) {
+            touchStartClientX = event.pageX;
+            touchStartClientY = event.pageY;
+        } else {
+            touchStartClientX = event.touches[0].clientX;
+            touchStartClientY = event.touches[0].clientY;
+        }
+        event.preventDefault();
+
+    }, { passive: false });
+
+    glob48.addEventListener("touchmove", function (event) {
+        event.preventDefault();
+    }, { passive: false });
+
+    glob48.addEventListener('touchend', function (event) {
+        if ((!window.navigator.msPointerEnabled && event.touches.length > 0) ||
+            event.targetTouches.length > 0) {
+            return; // Ignore if still touching with one or more fingers or input
+        }
+
+        var touchEndClientX, touchEndClientY;
+        if (window.navigator.msPointerEnabled) {
+            touchEndClientX = event.pageX;
+            touchEndClientY = event.pageY;
+        } else {
+            touchEndClientX = event.changedTouches[0].clientX;
+            touchEndClientY = event.changedTouches[0].clientY;
+        }
+        var dx = touchEndClientX - touchStartClientX;
+        var absDx = Math.abs(dx);
+
+        var dy = touchEndClientY - touchStartClientY;
+        var absDy = Math.abs(dy);
+        if (Math.max(absDx, absDy) > 10) {
+            // (down : up) : (down : up)
+            direction = absDx > absDy ? (dy > 0 ? "down" : "up") : (dx > 0 ? "left" : 0)
+            console.log("")
+            data101( absDx > absDy ? (dx > 0 ? 1 : 3) : (dy > 0 ? 2 : 0));
+        } else {
+            data17(event)
+        }
+        event.preventDefault();
+    }, { passive: false })
+}
+
