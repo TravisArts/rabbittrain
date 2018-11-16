@@ -37,9 +37,8 @@ function down(e) {
         case 32:
             glob30 = true
             break;
-        case 80:
-            glob16 = !glob16
-            proc93()
+        case 80:    //pause
+            togglePause()
         default:
             break;
     }
@@ -428,12 +427,19 @@ function newGamePressed() {
     var newButton = document.getElementById("newGame")
     var controlls = document.getElementById("controlls")
     
-    var buttons = document.getElementsByClassName("dificulty")
+    var dificulty = document.getElementsByClassName("dificulty")
+
+
+    var buttons = document.getElementById("controlls").children//.getElementsByTagName("button")
+    console.log(buttons)
 
     if (newButton.style.transform != "") {
         newButton.style = ""
         controlls.style = ""
-        for(var i = 0; i < buttons.length; i++) {
+        for(var i = 0; i < dificulty.length; i++) {
+            dificulty[i].style = ""
+        }
+        for(var i = 2; i < buttons.length; i++) {
             buttons[i].style = ""
         }
     } else {
@@ -443,13 +449,22 @@ function newGamePressed() {
         console.log(dx)
         newButton.style = "transform: translate(" + dx + "px, 0);"
         
-        for(var i = 0; i < buttons.length; i++) {
-            buttons[i].style = "transform: translate(" + dx + "px, " + (50*(i+1)) + "px); opacity: 1;"
+        dx += parseInt(buttonStyle.width, 10)/2 - 75
+        dx -= 150
+        for(var i = 0; i < dificulty.length; i++) {
+            dx += 75
+            dificulty[i].style = "transform: translate(" + dx + "px, " + (50*(i+1)) + "px); opacity: 1;"
+        }
+        for(var i = 2; i < buttons.length; i++) {
+            buttons[i].style = "opacity: 0;"
         }
         
-        // newButton.style = "position: absolute;left: 50%; transform: translate(-50%, 0);"
-        // var margin = parseInt(buttonStyle.width, 10) + parseInt(controllStyle.getPropertyValue("margin-right"), 10) + 5
-        // console.log(margin)
-        // controlls.style = "margin-right:" + margin + ";"
     }
+}
+
+function togglePause() {
+    glob16 = !glob16
+    proc93()
+    var pauseIcon = glob16 ? "play_arrow" : "pause"
+    document.getElementById("pause").innerText = pauseIcon
 }

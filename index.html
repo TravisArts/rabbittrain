@@ -95,7 +95,8 @@
     <div id="container">
 
         <div id="controlls">
-            <button onclick="newGamePressed()" id="newGame" class="newGame">New Game</button>
+            
+            <button onclick="newGamePressed()" id="newGame" class="newGame"><i class="icons">new_game</i></button>
             <div style="position: relative; width: fit-content;">
                 <button onclick="selectDificulty(1)" class="dificulty">Easy</button>
                 <button onclick="selectDificulty(2)" class="dificulty">Medium</button>
@@ -106,7 +107,8 @@
                 <option value="2">Medium</option>
                 <option value="3">Hard</option>
             </select> -->
-            <button onclick="showHighScores()"> High Scores </button>
+            <button onclick="showHighScores()"><i class="icons">trophy</i></button>
+            <button onclick="togglePause()"><i class="icons" id="pause">pause</i></button>
             <button onclick="muteButtonPress()"><i class="icons" id="muteIcon"></i></button>
             <button onclick="musicButtonPress()"><i class="icons" id="musicIcon"></i></button>
 

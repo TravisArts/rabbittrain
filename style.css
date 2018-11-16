@@ -373,18 +373,17 @@ button {
     position: relative;
 }
 
-.dificulty,
-.newGame {
+#controlls button {
     transition: all 0.5s; 
 }
 .dificulty {
-    /* -webkit-transition: left 2s; /* Safari */
     position: absolute;
     left:0;
     top: 0;
     opacity: 0;
     z-index:5;
-    /* left: 50%; transform: translate(-50%, 0) */
+    font-size: 24px;
+    width: 150px;
 }
 .newGame {
     z-index: 10;
