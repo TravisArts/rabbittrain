@@ -110,14 +110,14 @@ body {
 #lives div img {
     position: absolute;
     transform: translate(-96px, -128px);
-    clip: rect(128px, 128px, 160px, 96px);
+    clip: rect(128px, 128px, 144px, 96px);
     /* clip: shape(top, right, bottom, left); NB 'rect' is the only available option */
 }
 
 #carrots div img {
     position: absolute;
     transform: translate(-64px, -128px);
-    clip: rect(128px, 96px, 160px, 64px);
+    clip: rect(128px, 96px, 144px, 64px);
     /* clip: shape(top, right, bottom, left); NB 'rect' is the only available option */
 }
 
@@ -368,4 +368,24 @@ td:first-child {
 button {
     background-color: #CCFFCC;
     color: #2D79AC;
+}
+#controlls > button {
+    position: relative;
+}
+
+.dificulty,
+.newGame {
+    transition: all 0.5s; 
+}
+.dificulty {
+    /* -webkit-transition: left 2s; /* Safari */
+    position: absolute;
+    left:0;
+    top: 0;
+    opacity: 0;
+    z-index:5;
+    /* left: 50%; transform: translate(-50%, 0) */
+}
+.newGame {
+    z-index: 10;
 }

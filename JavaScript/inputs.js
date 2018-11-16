@@ -195,9 +195,10 @@ function proc109() {
 
 
 
-function selectDificulty() {
-    glob39 = document.getElementById("dificultySelector").value;
-    document.getElementById("dificultySelector").blur()
+function selectDificulty(value) {
+    newGamePressed()
+    glob39 = value;
+    // document.getElementById("dificultySelector").blur()
     clearInterval(updateInterval)
     // proc46(glob39);
     glob27 = true;
@@ -415,7 +416,7 @@ function setupControlls() {
             // (down : up) : (down : up)
             direction = absDx > absDy ? (dy > 0 ? "down" : "up") : (dx > 0 ? "left" : 0)
             console.log("")
-            data101( absDx > absDy ? (dx > 0 ? 1 : 3) : (dy > 0 ? 2 : 0));
+            data101(absDx > absDy ? (dx > 0 ? 1 : 3) : (dy > 0 ? 2 : 0));
         } else {
             data17(event)
         }
@@ -423,3 +424,32 @@ function setupControlls() {
     }, { passive: false })
 }
 
+function newGamePressed() {
+    var newButton = document.getElementById("newGame")
+    var controlls = document.getElementById("controlls")
+    
+    var buttons = document.getElementsByClassName("dificulty")
+
+    if (newButton.style.transform != "") {
+        newButton.style = ""
+        controlls.style = ""
+        for(var i = 0; i < buttons.length; i++) {
+            buttons[i].style = ""
+        }
+    } else {
+        var buttonStyle = window.getComputedStyle(newButton)
+        var controllStyle = window.getComputedStyle(controlls)
+        var dx =   - ( parseInt(controllStyle.width, 10) - parseInt(buttonStyle.width, 10)) / 2
+        console.log(dx)
+        newButton.style = "transform: translate(" + dx + "px, 0);"
+        
+        for(var i = 0; i < buttons.length; i++) {
+            buttons[i].style = "transform: translate(" + dx + "px, " + (50*(i+1)) + "px); opacity: 1;"
+        }
+        
+        // newButton.style = "position: absolute;left: 50%; transform: translate(-50%, 0);"
+        // var margin = parseInt(buttonStyle.width, 10) + parseInt(controllStyle.getPropertyValue("margin-right"), 10) + 5
+        // console.log(margin)
+        // controlls.style = "margin-right:" + margin + ";"
+    }
+}

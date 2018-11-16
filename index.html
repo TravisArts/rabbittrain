@@ -1,9 +1,10 @@
 <html lang="en">
 
 <head>
+    <title>Go!Go! Bunny Train</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-    <!-- <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no viewport-fit=cover"> -->
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <!-- <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" /> -->
 
     <meta property="og:url" content="https://travisarts.github.io/rabbittrain/" />
     <meta property="og:type" content="website" />
@@ -24,7 +25,6 @@
     <script type="text/javascript" src="JavaScript/inputs.js"></script>
     <script type="text/javascript" src="JavaScript/objects.js"></script>
     <script type="text/javascript" src="JavaScript/ion.sound.min.js"></script>
-    <title>Go!Go! Bunny Train</title>
     <script src="https://connect.facebook.net/en_US/fbinstant.6.2.js"></script>
 </head>
 
@@ -95,12 +95,17 @@
     <div id="container">
 
         <div id="controlls">
-
-            <select name="dificulty" id="dificultySelector" onchange="selectDificulty()" onfocus="selectorActive()">
+            <button onclick="newGamePressed()" id="newGame" class="newGame">New Game</button>
+            <div style="position: relative; width: fit-content;">
+                <button onclick="selectDificulty(1)" class="dificulty">Easy</button>
+                <button onclick="selectDificulty(2)" class="dificulty">Medium</button>
+                <button onclick="selectDificulty(3)" class="dificulty">Hard</button>
+            </div>
+            <!-- <select name="dificulty" id="dificultySelector" onchange="selectDificulty()" onfocus="selectorActive()">
                 <option value="1">Easy</option>
                 <option value="2">Medium</option>
                 <option value="3">Hard</option>
-            </select>
+            </select> -->
             <button onclick="showHighScores()"> High Scores </button>
             <button onclick="muteButtonPress()"><i class="icons" id="muteIcon"></i></button>
             <button onclick="musicButtonPress()"><i class="icons" id="musicIcon"></i></button>
