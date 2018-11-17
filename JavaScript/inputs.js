@@ -34,8 +34,8 @@ function down(e) {
         case 40:    // down
             data101(2)
             break;
-        case 32:
-            glob30 = true
+        case 32:    // space
+            rush(true)
             break;
         case 80:    //pause
             togglePause()
@@ -47,8 +47,8 @@ function down(e) {
 function up(e) {
 
     switch (e.keyCode) {
-        case 32:
-            glob30 = false
+        case 32:    // space
+            rush(false)
             break;
         // case 80:
         //     glob16 = false
@@ -421,6 +421,20 @@ function setupControlls() {
         }
         event.preventDefault();
     }, { passive: false })
+
+    document.getElementById("rushButton").addEventListener('touchstart', function(event) {
+        rush(true)
+    }, { passive: false })
+    document.getElementById("rushButton").addEventListener('touchend', function(event) {
+        rush(false)
+    }, { passive: false })
+
+    document.getElementById("rushButton").addEventListener('mousedown', function(event) {
+        rush(true)
+    }, { passive: false })
+    document.getElementById("rushButton").addEventListener('mouseup', function(event) {
+        rush(false)
+    }, { passive: false })
 }
 
 function newGamePressed() {
@@ -467,4 +481,8 @@ function togglePause() {
     proc93()
     var pauseIcon = glob16 ? "play_arrow" : "pause"
     document.getElementById("pause").innerText = pauseIcon
+}
+
+function rush(state) {
+    glob30 = state
 }

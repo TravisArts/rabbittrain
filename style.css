@@ -367,6 +367,7 @@ td:first-child {
 
 button {
     background-color: #CCFFCC;
+    border-color: #CCFFCC;
     color: #2D79AC;
 }
 #controlls > button {
@@ -387,4 +388,22 @@ button {
 }
 .newGame {
     z-index: 10;
+}
+
+#rushButton {
+    /* background-color: #C75057; */
+    /* background-color: #B74256; */
+    background-color: #D24049;
+    width: 75%;
+    height: 48px;
+    /* border-color: #B74256; */
+    border-color: #D24049;
+    /* border-color: #ED3D38; */
+    /* #dba0aa #5b212b #5b212b; */
+    /* border-left-color: #dba0aa */
+    /* border-top-color: */
+    color: #FFF;
+}
+#rushButton i {
+    font-size: 36px;
 }
