@@ -1876,7 +1876,7 @@ function proc145() {
 
 
 function handleVisibilityChange() {
-    if (document.hidden && glob16) {
+    if (document.hidden && !glob16) {
         togglePause();
     }
 }
