@@ -1006,15 +1006,16 @@ function proc104(param1, value) {
     var A6 = new Array(7)
     D3 = 0;
 
-    var funRslt = param1 & 0x00FF;
-    var P1 = (param1 & -256) | ((param1 & -256) >> 8);
-
+    var funRslt = Math.abs(param1)// & 0x00FF;
+    var P1 = (param1 & -1) | ((param1 & -1) >> 8);
 
     if (value != 0xFF) {            // if tile is not emtpy
 
         if ((value & 0xC0) != 0) { // tile is an edge
+            // console.log("0x" + param1.toString(16) + "\n0x" + funRslt.toString(16) + "\n0x" + P1.toString(16))
             D5 = 2;
-            if (P1 <= 0) {
+            // if (P1 <= 0) {
+            if ((value & 0x40) == 0) {
                 D6 = 20;
             } else {
                 D6 = 12;
@@ -1101,7 +1102,8 @@ function proc106(param1) {
 
     if (D5 > 2) {
         // D4 |= 0xFF00;
-        D4 |= -256;
+        // D4 |= -256;
+        D4 *= -1
     }
 
     nextY = param1.offset4 + ptArr[D5].y;

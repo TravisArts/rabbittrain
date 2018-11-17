@@ -19,6 +19,7 @@ function down(e) {
     // keys.push(e.keyCode)
     // keys = e.keyCode
 
+    e.preventDefault()
     // glob172 = new Date().getTime()
 
     switch (e.keyCode) {
@@ -45,7 +46,7 @@ function down(e) {
 }
 
 function up(e) {
-
+    e.preventDefault()
     switch (e.keyCode) {
         case 32:    // space
             rush(false)
