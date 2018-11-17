@@ -203,6 +203,11 @@ function selectDificulty(value) {
     glob27 = true;
     glob6 = false;
 
+    glob16 = false
+    document.getElementById("pause").innerText = "pause"
+    glob176.style.display = "none"
+    glob175 = false
+
     setup()
 }
 
@@ -422,17 +427,17 @@ function setupControlls() {
         event.preventDefault();
     }, { passive: false })
 
-    document.getElementById("rushButton").addEventListener('touchstart', function(event) {
+    document.getElementById("rushButton").addEventListener('touchstart', function (event) {
         rush(true)
     }, { passive: false })
-    document.getElementById("rushButton").addEventListener('touchend', function(event) {
+    document.getElementById("rushButton").addEventListener('touchend', function (event) {
         rush(false)
     }, { passive: false })
 
-    document.getElementById("rushButton").addEventListener('mousedown', function(event) {
+    document.getElementById("rushButton").addEventListener('mousedown', function (event) {
         rush(true)
     }, { passive: false })
-    document.getElementById("rushButton").addEventListener('mouseup', function(event) {
+    document.getElementById("rushButton").addEventListener('mouseup', function (event) {
         rush(false)
     }, { passive: false })
 }
@@ -440,7 +445,7 @@ function setupControlls() {
 function newGamePressed() {
     var newButton = document.getElementById("newGame")
     var controlls = document.getElementById("controlls")
-    
+
     var dificulty = document.getElementsByClassName("dificulty")
 
 
@@ -450,29 +455,29 @@ function newGamePressed() {
     if (newButton.style.transform != "") {
         newButton.style = ""
         controlls.style = ""
-        for(var i = 0; i < dificulty.length; i++) {
+        for (var i = 0; i < dificulty.length; i++) {
             dificulty[i].style = ""
         }
-        for(var i = 2; i < buttons.length; i++) {
+        for (var i = 2; i < buttons.length; i++) {
             buttons[i].style = ""
         }
     } else {
         var buttonStyle = window.getComputedStyle(newButton)
         var controllStyle = window.getComputedStyle(controlls)
-        var dx =   - ( parseInt(controllStyle.width, 10) - parseInt(buttonStyle.width, 10)) / 2
+        var dx = - (parseInt(controllStyle.width, 10) - parseInt(buttonStyle.width, 10)) / 2
         console.log(dx)
         newButton.style = "transform: translate(" + dx + "px, 0);"
-        
-        dx += parseInt(buttonStyle.width, 10)/2 - 75
+
+        dx += parseInt(buttonStyle.width, 10) / 2 - 75
         dx -= 150
-        for(var i = 0; i < dificulty.length; i++) {
+        for (var i = 0; i < dificulty.length; i++) {
             dx += 75
-            dificulty[i].style = "transform: translate(" + dx + "px, " + (50*(i+1)) + "px); opacity: 1;"
+            dificulty[i].style = "transform: translate(" + dx + "px, " + (50 * (i + 1)) + "px); opacity: 1;"
         }
-        for(var i = 2; i < buttons.length; i++) {
+        for (var i = 2; i < buttons.length; i++) {
             buttons[i].style = "opacity: 0;"
         }
-        
+
     }
 }
 

@@ -1791,6 +1791,9 @@ function proc54() {
     }
     updateInterval = setInterval(update, 1000 / 60);
     glob171 = TickCount() - glob17;
+
+    glob33 = glob32
+    glob34 = TickCount()
 }
 
 function proc95() {
@@ -1865,4 +1868,8 @@ function proc42() {
 
 
     showHighScores()
+}
+
+function proc145() {
+    
 }
