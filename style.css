@@ -4,6 +4,7 @@ canvas {
     margin-left: auto;
     margin-right: auto;
     display: block;
+    max-width: 100%;
     /* width: 800px; */
 }
 
@@ -112,19 +113,20 @@ body {
     display: inline-block;
     width: 17px;
     height: 17px;
+    overflow: hidden;
 }
 
 #lives div img {
-    position: absolute;
+    /* position: absolute; */
     transform: translate(-96px, -128px);
-    clip: rect(128px, 128px, 144px, 96px);
+    /* clip: rect(128px, 128px, 144px, 96px); */
     /* clip: shape(top, right, bottom, left); NB 'rect' is the only available option */
 }
 
 #carrots div img {
-    position: absolute;
+    /* position: absolute; */
     transform: translate(-64px, -128px);
-    clip: rect(128px, 96px, 144px, 64px);
+    /* clip: rect(128px, 96px, 144px, 64px); */
     /* clip: shape(top, right, bottom, left); NB 'rect' is the only available option */
 }
 
@@ -135,7 +137,7 @@ body {
     padding-right: 0;
     margin-left: auto;
     margin-right: auto;
-    width: 1000px;
+    /* width: 1000px; */
 }
 
 #loop {
@@ -306,7 +308,7 @@ td:first-child {
     top: 10%;
     transform: translate(-50%, -50%); */
     width: 443px;
-    height: 20px;
+    height: 40px;
     max-width: 90%;
     margin: 0 auto;
 }
@@ -337,7 +339,7 @@ td:first-child {
 #container {
     /* display: flex; */
     width: 500px;
-    margin: 0 auto;
+    margin: 20px auto;
 }
 
 @media screen and (max-width: 600px) {
@@ -355,13 +357,13 @@ td:first-child {
         height: 32px;
     }
     #lives div img {
-        transform: translate(-74px, -160px);
-        clip: rect(160px, 96px, 192px, 64px);
+        transform: translate(-64px, -160px);
+        /* clip: rect(160px, 96px, 192px, 64px); */
         /* clip: shape(top, right, bottom, left); NB 'rect' is the only available option */
     }
     #carrots div img {
-        transform: translate(-170px, -160px);
-        clip: rect(160px, 192px, 192px, 160px);
+        transform: translate(-160px, -160px);
+        /* clip: rect(160px, 192px, 192px, 160px); */
         /* clip: shape(top, right, bottom, left); NB 'rect' is the only available option */
     }
     #loop {
@@ -377,8 +379,15 @@ button {
     border-color: #CCFFCC;
     color: #2D79AC;
 }
+
+button i {
+    font-size: 30px;
+}
 #controlls > button {
     position: relative;
+    width: 40px;
+    height:40px;
+    margin: 2px;
 }
 
 #controlls button {
