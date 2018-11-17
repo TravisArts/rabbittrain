@@ -301,6 +301,7 @@ function proc110(param1) {
     var result;
     var index;
 
+    //not final frame on tile
     if (param1.offset14 < param1.offset12 - 1) {
 
         param1.offset14 += 1;
@@ -308,7 +309,7 @@ function proc110(param1) {
         param1.shr11AC = Arr12A[index][param1.offset14 + 16];    // fixed
         result = true;
 
-    } else {
+    } else { // is the final frame on tile
 
         index = param1.offset10;
         var var1 = Arr12A[index][25]; // fixed
@@ -410,17 +411,17 @@ function proc97() {
         proc102();
         proc101();
         proc108();
-        proc25();
-        proc21();
-        proc22();
-        proc26();
+        proc25();   // player crash with cart test
+        proc21();   // player takes carrot test
+        proc22();   // enimy takes carrot test
+        proc26();   // check if destroy enimy test
         proc100(); // glob7 isnt changed
         proc98();
         proc66();
         proc142();
 
         if (glob160) {
-            proc24();
+            proc24();   // check if player crashes into wall
         }
     }
 }
@@ -1060,7 +1061,7 @@ function proc104(param1, value) {
 
 
 
-/* determine if we are hitting an empty square */
+/* determine if we crash from moving square */
 function proc105(param1, funRslt) {
     var direction;
 
@@ -1079,6 +1080,7 @@ function proc105(param1, funRslt) {
     }
 
     if (hitsEmpty) {
+        param1.offset6 = Arr12A[param1.offset10][25];
         var index = param1.offset4 * 8 + param1.offset2;
         param1.offset10 = proc104(param1.offset6, glob41[index]);
     }
@@ -1122,7 +1124,7 @@ function proc106(param1) {
         // console.log("proc104(" + param1.offset6 + ", glob41[" + index + "]) = " + param1.offset10)
     } else {
         result = true;
-        param1.offset6 = D4;
+        param1.offset6 = Math.abs(D4);
         param1.offset2 = nextX;
         param1.offset4 = nextY;
     }
