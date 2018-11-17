@@ -101,7 +101,7 @@ window.onload = function () {
 
 
     setupControlls()
-      
+
 
     setup()
 
@@ -160,7 +160,7 @@ function randomizeLayout() {
     var container = document.getElementById("container")
     // var w = Math.min(container.offsetWidth, glob47.style.width)
     // var h = glob47.style.height
-    if ( container.offsetWidth < w ) {
+    if (container.offsetWidth < w) {
         h *= container.offsetWidth / w
         w = container.offsetWidth
     }
@@ -1871,5 +1871,14 @@ function proc42() {
 }
 
 function proc145() {
-    
+
 }
+
+
+function handleVisibilityChange() {
+    if (document.hidden && glob16) {
+        togglePause();
+    }
+}
+
+document.addEventListener("visibilitychange", handleVisibilityChange, false);
