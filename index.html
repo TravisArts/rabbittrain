@@ -16,7 +16,7 @@
     <link rel="preload" href="Charcoal.ttf" as="font">
     <link rel="icon" href="Images/favicon.ico" type="image/x-icon">
     <!-- <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"> -->
-    
+
 
     <script type="text/javascript" src="JavaScript/main.js"></script>
     <script type="text/javascript" src="JavaScript/Cookies.js"></script>
@@ -95,7 +95,7 @@
     <div id="container">
 
         <div id="controlls">
-            
+
             <button onclick="newGamePressed()" id="newGame" class="newGame"><i class="icons">new_game</i></button>
             <div style="position: relative; width: fit-content;">
                 <button onclick="selectDificulty(1)" class="dificulty">Easy</button>
@@ -115,8 +115,9 @@
         </div>
         <br>
         <canvas id="hiddenCanvas" style="border:1px solid #000000;"></canvas>
-        <canvas id="canvas2" style="border:1px solid #000000; top: 100px;"></canvas>
-
+        <div id="canvas2div">
+            <canvas id="canvas2" style="border:1px solid #000000;"></canvas>
+        </div>
         <div class="hidden">
             <canvas id="myCanvas" style="border:1px solid #000000;max-width:100%;"></canvas>
             <canvas id="rabbitCanvas" style="border:1px solid #000000;"></canvas>
