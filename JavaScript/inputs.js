@@ -492,3 +492,9 @@ function togglePause() {
 function rush(state) {
     glob30 = state
 }
+
+
+function closeScore() {
+    document.getElementById('scoreModal').style.display = "none"
+    proc54()
+}

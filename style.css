@@ -26,9 +26,9 @@ div canvas {
     font-style: normal;
     font-weight: 400;
     src: url(style/Icons-Regular.woff2) format('woff2');
-  }
-  
-  .icons {
+}
+
+.icons {
     font-family: 'Icons';
     font-weight: normal;
     font-style: normal;
@@ -42,11 +42,12 @@ div canvas {
     direction: ltr;
     text-rendering: optimizeLegibility;
     -webkit-font-smoothing: antialiased;
-  }
+}
 
 /* .titleBar {
 
 } */
+
 html,
 body {
     font-family: "Charcoal";
@@ -54,12 +55,18 @@ body {
     background-color: #A1B2D0;
     max-width: 100%;
     overflow-x: hidden;
-    -webkit-touch-callout: none; /* iOS Safari */
-    -webkit-user-select: none; /* Safari */
-     -khtml-user-select: none; /* Konqueror HTML */
-       -moz-user-select: none; /* Firefox */
-        -ms-user-select: none; /* Internet Explorer/Edge */
-            user-select: none; /* Non-prefixed version, currently
+    -webkit-touch-callout: none;
+    /* iOS Safari */
+    -webkit-user-select: none;
+    /* Safari */
+    -khtml-user-select: none;
+    /* Konqueror HTML */
+    -moz-user-select: none;
+    /* Firefox */
+    -ms-user-select: none;
+    /* Internet Explorer/Edge */
+    user-select: none;
+    /* Non-prefixed version, currently
                                   supported by Chrome and Opera */
 }
 
@@ -167,6 +174,58 @@ body {
     display: none;
     z-index: 50;
 }
+
+.modalHeader,
+.modalBody,
+.modalFooter {
+    /* position: absolute; */
+    display: block;
+    padding: 5px;
+}
+
+.modalHeader,
+.modalFooter {
+    background-color: #CCC;
+    font-size: 1.5em;
+}
+
+#scoreModal {
+    padding: 0px;
+    width: 366px;
+    /* height: 312px; */
+    /* height: 115px; */
+    background-color: #FFF;
+    position: absolute;
+    top: 33%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: none;
+    z-index: 50;
+}
+
+
+.modalFooter button {
+    font-size: 13px;
+    height: 28px;
+    /* padding: 0 4px 0 6px; */
+}
+#facebookShareButton {
+    background: #365899;
+    border-color: #365899;
+    /* border-radius: 4px; */
+    /* font-family: Helvetica; */
+    color: #FFF;
+}
+
+.FBLogo {
+    display: inline-block;
+    zoom: 1;
+    vertical-align: middle;
+    /* font-size: 13px; */
+    /* height: 28px; */
+}
+
+
 
 .HS2,
 .HS1 {
@@ -322,6 +381,7 @@ td:first-child {
     top: -208px;
     height: 0px;
 }
+
 #canvas2 {
     /* position: absolute; */
     /* left: 50%; */
@@ -395,26 +455,29 @@ button i {
     font-size: 30px;
     width: 100%
 }
-#controlls > button {
+
+#controlls>button {
     position: relative;
     width: 40px;
-    height:40px;
+    height: 40px;
     margin: 2px;
     padding: 2px;
 }
 
 #controlls button {
-    transition: all 0.5s; 
+    transition: all 0.5s;
 }
+
 .dificulty {
     position: absolute;
-    left:0;
+    left: 0;
     top: 0;
     opacity: 0;
-    z-index:5;
+    z-index: 5;
     font-size: 24px;
     width: 150px;
 }
+
 .newGame {
     z-index: 10;
 }
@@ -433,6 +496,7 @@ button i {
     /* border-top-color: */
     color: #FFF;
 }
+
 #rushButton i {
     font-size: 36px;
 }

@@ -104,6 +104,7 @@ window.onload = function () {
 
 
     setup()
+    checkLoginState()
 
 };
 
@@ -1870,11 +1871,50 @@ function proc42() {
     //     .then(() => console.log('Score saved'))
     //     .catch(error => console.error(error));
 
+    proc53()
+    var dificultyName
+    switch (glob39) {
+        case 1:
+            dificultyName = "Easy"
+            break;
+        case 2:
+            dificultyName = "Medium"
+            break;
+        case 3:
+            dificultyName = "Hard"
+            break;
+        default:
+            break;
+    }
+    document.getElementById('mDificulty').innerText = dificultyName
+    document.getElementById('mLevel').innerText = glob45
+    document.getElementById('mScore').innerText = glob31
 
-    showHighScores()
+    document.getElementById('scoreModal').style.display = "block"
+
+    // showHighScores()
 }
 
 function proc145() {
+    var dificultyName
+    switch (glob39) {
+        case 1:
+            dificultyName = "Easy"
+            break;
+        case 2:
+            dificultyName = "Medium"
+            break;
+        case 3:
+            dificultyName = "Hard"
+            break;
+        default:
+            break;
+    }
+    document.getElementById('mDificulty').innerText = dificultyName
+    document.getElementById('mLevel').innerText = glob45
+    document.getElementById('mScore').innerText = glob31
+
+    document.getElementById('scoreModal').style.display = "block"
 
 }
 
@@ -1886,3 +1926,5 @@ function handleVisibilityChange() {
 }
 
 document.addEventListener("visibilitychange", handleVisibilityChange, false);
+
+

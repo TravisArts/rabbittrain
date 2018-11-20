@@ -29,15 +29,80 @@
 </head>
 
 <body>
-    <!-- <div id="fb-root"></div>
+    <div id="fb-root"></div>
     <script>
+
+        function facebookLogin() {
+            FB.login(function (response) {
+                if (response.authResponse) {
+                    console.log('Welcome!  Fetching your information.... ');
+                    FB.api('/me', function (response) {
+                        console.log('Good to see you, ' + response.name + '.');
+                    });
+                } else {
+                    console.log('User cancelled login or did not fully authorize.');
+                }
+            });
+            // }, {scope: 'user_friends'});
+        }
+        function checkLoginState() {
+            // FB.getLoginStatus(function (response) {
+            //     // statusChangeCallback(response);
+            //     if (response.status === 'connected') {
+            //         // The user is logged in and has authenticated your
+            //         // app, and response.authResponse supplies
+            //         // the user's ID, a valid access token, a signed
+            //         // request, and the time the access token 
+            //         // and signed request each expire.
+            //         var uid = response.authResponse.userID;
+            //         var accessToken = response.authResponse.accessToken;
+            //         document.getElementById("facebookLoginButton").style.display = 'none'
+            //     } else {
+            //         document.getElementById("facebookLoginButton").style.display = 'inline-block'
+            //     }
+            //     console.log(response)
+            // });
+        }
+
+        function facebookShare() {
+            var dificultyName
+            switch (glob39) {
+                case 1:
+                    dificultyName = "Easy"
+                    break;
+                case 2:
+                    dificultyName = "Medium"
+                    break;
+                case 3:
+                    dificultyName = "Hard"
+                    break;
+                default:
+                    break;
+            }
+            var title = 'Go!Go!BunnyTrain – ' + dificultyName
+            var description = "I scored " + glob31 + " points on level " + glob45 + ".  How can you do?"
+            // var description = "I made it to level " + glob45 + " on " + dificultyName + ".\nI scored " + glob31 + " points." 
+            FB.ui({
+                method: 'share_open_graph',
+                action_type: 'og.shares',
+                action_properties: JSON.stringify({
+                    object: {
+                        'og:url': 'https://travisarts.github.io/rabbittrain/',
+                        'og:title': title,
+                        'og:description': description,
+                        'og:image': 'https://travisarts.github.io/rabbittrain/Images/Preview.png'
+                    }
+                })
+            })
+        }
+
         window.fbAsyncInit = function () {
             FB.init({
                 appId: '1922117394546392',
                 xfbml: true,
                 version: 'v3.2'
             });
-            FB.AppEvents.logPageView();
+            // FB.AppEvents.logPageView();
         };
 
         (function (d, s, id) {
@@ -52,7 +117,7 @@
             .then(function () {
                 // Start loading game assets here
             });
-    </script> -->
+    </script>
     <!-- <div id="fb-root"></div>
     <script>(function (d, s, id) {
             var js, fjs = d.getElementsByTagName(s)[0];
@@ -237,7 +302,44 @@
             </div>
         </div>
 
-        <div style="text-align: center;">
+        <div id="scoreModal">
+            <div class="modalHeader">
+                Game Over
+            </div>
+            <div class="modalBody">
+                <p>On <span id="mDificulty"></span>, you made it to level <span id="mLevel"></span> with a score
+                    of
+                    <span id="mScore"></span>.<br>
+                </p>
+                <p>
+                    would you like to share you're score?
+                </p>
+            </div>
+            <div class="modalFooter">
+                <!-- <div class="fb-login-button" data-max-rows="1" data-size="medium" data-button-type="login_with"
+                    data-show-faces="false" data-auto-logout-link="false" data-use-continue-as="false"></div>
+                <button id="facebookLoginButton" onclick="facebookLogin()" style="display:none;">Login with Facebook</button> -->
+                <button id="facebookShareButton" onclick="facebookShare()">
+                    <span class="FBLogo">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" class="_1pbq" style="width: 16px; height: 16px;" color="#ffffff">
+                            <path fill="#ffffff" fill-rule="evenodd" d="M8 14H3.667C2.733 13.9 2 13.167 2 12.233V3.667A1.65 1.65 0 0 1
+                            3.667 2h8.666A1.65 1.65 0 0 1 14 3.667v8.566c0 .934-.733
+                            1.667-1.667
+                            1.767H10v-3.967h1.3l.7-2.066h-2V6.933c0-.466.167-.9.867-.9H12v-1.8c.033
+                            0-.933-.266-1.533-.266-1.267 0-2.434.7-2.467
+                            2.133v1.867H6v2.066h2V14z"></path>
+                        </svg>
+                        <!-- <img class="_1pbs inlineBlock img" src="https://static.xx.fbcdn.net/rsrc.php/v3/yP/r/Wq8eKb91kes.png" style="display:none;" alt="" width="16" height="16"> -->
+                        </span>
+                        <span class="FBLogo">
+                            Share with Facebook
+                        </span>
+                </button>
+                <button onclick="closeScore()">Close</button>
+            </div>
+        </div>
+        <div style=" text-align:
+                    center;">
             <button id="rushButton"><i class="icons">fast_forward</i></button>
         </div>
         <br>
