@@ -169,6 +169,7 @@ function proc139(sndID) {
     sound = sounds[sndID];
     // console.log(sound)
     // document.getElementById(sound).cloneNode(true).play()
+    ion.sound.stop()
     ion.sound.play(sound);
     console.log("playing " + sound)
 }
