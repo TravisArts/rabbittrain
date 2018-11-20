@@ -118,6 +118,8 @@ function randomizeLayout() {
     var D0, D1, D5;
     var index;
     var length;
+
+    glob41 = []
     switch (glob39) {
         case 3:
             glob46 = glob45 + 16;
@@ -386,7 +388,7 @@ function proc37() {
 function proc94() {
 
     // console.log("proc94")
-    proc93();
+    // proc93();
 
     if (glob27) {
         proc77(); // setup parameters
@@ -450,7 +452,7 @@ function proc77() {
         glob36 += 2;
     }
     if (glob39 == 3) {
-        glob36 += 1;
+        glob36 -= 1;
     }
     glob37 = 0;
     // glob28 = true;
@@ -468,6 +470,9 @@ function proc77() {
         }
         // proc63();
     }
+
+
+    glob162 = false;
 }
 
 /* use default character */
@@ -590,7 +595,7 @@ function proc79() {
     proc57();               // layout tiles
 
     clearInterval(updateInterval)
-    setTimeout(function () {
+    stageTimeout = setTimeout(function () {
         DisposeWindow(newWind);
         // proc90();               // size the window to fit the new layout
 
@@ -1306,234 +1311,6 @@ function swap(x) {
     return x
 }
 
-function proc15a(param1, param2) {
-
-    var D0, D1, D7;
-
-    D0 = param1;
-    //    param1 = D1;
-    D1 = param2;
-
-
-
-    var mulD0, mulD1;
-    mulD0 = 1;
-    mulD1 = 1;
-
-    if (D0 < 0)
-        mulD0 = -1;
-    if (D1 < 0)
-        mulD1 = -1;
-
-
-    D0 = Math.abs(D0);
-    D1 = Math.abs(D1);
-
-    if (D0 > 0) {
-        proc17(D0, Math.abs(D1));
-        D0 *= -1;
-    } else if (D1 > 0) {
-        proc17(Math.abs(D0), D1);
-        D0 *= -1;
-        D1 *= -1;
-    } else {
-        proc17(Math.abs(D0), Math.abs(D1));
-        D1 *= -1;
-    }
-
-
-
-
-    D7 = 0x0000FFFF;
-    if (D1 - D0 <= 0) {
-        // lap_3
-        if (D0 - D7 > 0) {
-            //lap_4
-            if (D1 - D7 > 0) {
-                //lap_5
-                var D2 = D0;
-                var D3 = D1;
-                //lap_6
-                while (D1 - D7 > 0) {
-                    D0 = D0 << 1;
-                    D1 = D1 << 1;
-                }
-                D0 /= D1;
-                D0 &= D7;
-                //lap_7
-                var BLO = true;
-                var BHI = true;
-
-                while (BLO == true && BHI == true) {
-                    BLO = false;
-                    BHI = false;
-
-                    D1 = D3;
-                    D1 *= D0;
-                    D7 = D3;
-                    swap(D7);
-                    D7 *= D0;
-                    swap(D0);
-                    D1 += D7;
-                    if (D1 < 0)
-                        BLO = true;
-                    D1 -= D2;
-                    if (D1 > 0)
-                        BHI = true;
-
-                    if (BHI || BLO) {
-                        D0 -= 1;
-                    }
-                }
-
-                D1 *= -1;
-            } else {
-                D7 = D0;
-                D0 &= 0xFFFF0000;
-                swap(D0);
-                D0 /= D1;
-                swap(D0);
-                swap(D7);
-                D7 = D0;
-                swap(D7);
-                D0 = (D7 & 0x0000FFFF);
-                swap(D7);
-                D1 = (D7 & 0x0000FFFF);
-            }
-        } else {
-            D0 /= D1;
-            swap(D0);
-            D1 = D0;
-            D0 &= 0xFFFF0000;
-            swap(D0);
-        }
-    } else {
-        D1 = D0;
-        D0 = 0;
-    }
-
-
-
-    D0 *= mulD0;
-    D1 *= mulD1;
-
-    D0 = D1;
-    return D0;
-}
-
-function proc15(param1, param2) {
-    var D0, D1;
-
-    D1 = param1;
-    D0 = param2;
-    proc16(D0, D1);
-    D0 = D1;
-
-    console.log("param1 = " + param1 + "D1 = " + D1)
-    return D0;
-
-}
-
-function proc16(D0, D1) {
-    var mulD0, mulD1;
-    mulD0 = -1;
-
-    if (D0 > 0) {
-        if (D1 > 0) {
-            proc17(D0, D1);
-        } else {
-            D1 *= -1;
-            proc17(D0, D1);
-            D0 *= -1;
-        }
-
-
-    } else if (D1 > 0) {
-        D0 *= -1;
-        proc17(D0, D1);
-        D0 *= -1;
-        D1 *= -1;
-
-    } else {
-        D1 *= -1;
-        D0 *= -1;
-        proc17(D0, D1);
-        D1 *= -1;
-    }
-}
-
-function proc17(D0, D1) {
-    var D7;
-    D7 = 0x0000FFFF;
-    if (D1 <= D0) {
-        // lap_3
-        if (D0 > D7) {
-            //lap_4
-            if (D1 > D7) {
-                //lap_5
-                var D2 = D0;
-                var D3 = D1;
-                //lap_6
-                while (D1 - D7 > 0) {
-                    D0 = D0 << 1;
-                    D1 = D1 << 1;
-                }
-                D0 /= D1;
-                D0 &= D7;
-                //lap_7
-                var BLO = true;
-                var BHI = true;
-
-                while (BLO == true && BHI == true) {
-                    BLO = false;
-                    BHI = false;
-
-                    D1 = D3;
-                    D1 *= D0;
-                    D7 = D3;
-                    swap(D7);
-                    D7 *= D0;
-                    swap(D0);
-                    D1 += D7;
-                    if (D1 < 0)
-                        BLO = true;
-                    D1 -= D2;
-                    if (D1 > 0)
-                        BHI = true;
-
-                    if (BHI || BLO) {
-                        D0 -= 1;
-                    }
-                }
-
-                D1 *= -1;
-            } else {
-                D7 = D0;
-                D0 &= 0xFFFF0000;
-                swap(D0);
-                D0 /= D1;
-                swap(D0);
-                swap(D7);
-                D7 = D0;
-                swap(D7);
-                D0 = (D7 & 0x0000FFFF);
-                swap(D7);
-                D1 = (D7 & 0x0000FFFF);
-            }
-        } else {
-            D0 /= D1;
-            swap(D0);
-            D1 = D0;
-            D0 &= 0xFFFF0000;
-            swap(D0);
-        }
-    } else {
-        D1 = D0;
-        D0 = 0;
-    }
-
-}
-
 function proc80(param1) {
 
     A5[2].offset2 = 0;              // x = 0
@@ -1601,7 +1378,7 @@ function proc81(param1) {
     A5[1].offset2 = 3;  // x = 3
     A5[1].offset4 = 4;  // y = 4
     A5[1].offset6 = 2;
-    A5[1].offset10 = proc104(A5[1].offset6, glob41[A5[1].offset4 * 8 + A5[1].offset2]);
+    A5[1].offset10 = proc104(2, glob41[4 * 8 + 3]);
     proc107(A5[1]);
     A5[1].lon1194 = TickCount();
     A5[1].shr1190 = 0;
@@ -1609,7 +1386,7 @@ function proc81(param1) {
 
 
     var D0 = glob46 >> 3 // /8;
-    swap(D0);
+    // swap(D0);
     if (D0 < 4) {
         glob38 += 2;
     }
@@ -1771,17 +1548,20 @@ function proc24() {
             glob27 = true;  ///////
             glob6 = true;   ///////
             proc145();      ///////
+        } else {
+            proc95();           ///////
         }
-        proc95();           ///////
     }, 2400)
 
 }
 /* suspend */
 function proc53() {
     clearInterval(updateInterval)
-    for (var i = 0; i < 9; i++) {
+    if (A5.length > 0) {
 
-        A5[i].shr1190 = A5[i].shr1190 + (TickCount() - A5[i].lon1194);
+        for (var i = 0; i < 9; i++) {
+            A5[i].shr1190 = A5[i].shr1190 + (TickCount() - A5[i].lon1194);
+        }
     }
 
     glob17 = TickCount() - glob171;
@@ -1789,10 +1569,11 @@ function proc53() {
 
 //resume
 function proc54() {
-
-    for (var i = 0; i < 9; i++) {
-        A5[i].lon1194 = TickCount();
-        A5[i].shr1190 = 0
+    if (A5.length > 0) {
+        for (var i = 0; i < 9; i++) {
+            A5[i].lon1194 = TickCount();
+            A5[i].shr1190 = 0
+        }
     }
     updateInterval = setInterval(update, 1000 / 60);
     glob171 = TickCount() - glob17;

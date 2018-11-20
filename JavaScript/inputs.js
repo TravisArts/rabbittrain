@@ -197,19 +197,20 @@ function proc109() {
 
 
 function selectDificulty(value) {
-    newGamePressed()
     glob39 = value;
     // document.getElementById("dificultySelector").blur()
     clearInterval(updateInterval)
+    clearTimeout(stageTimeout)
     // proc46(glob39);
     glob27 = true;
     glob6 = false;
-
+    
     glob16 = false
     document.getElementById("pause").innerText = "pause"
     glob176.style.display = "none"
     glob175 = false
-
+    
+    newGamePressed()
     setup()
 }
 
@@ -463,6 +464,9 @@ function newGamePressed() {
         for (var i = 2; i < buttons.length; i++) {
             buttons[i].style = ""
         }
+        if (!glob27){
+            proc54()
+        }
     } else {
         var buttonStyle = window.getComputedStyle(newButton)
         var controllStyle = window.getComputedStyle(controlls)
@@ -479,7 +483,7 @@ function newGamePressed() {
         for (var i = 2; i < buttons.length; i++) {
             buttons[i].style = "opacity: 0;"
         }
-
+        proc53()
     }
 }
 

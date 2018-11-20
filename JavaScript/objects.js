@@ -2,22 +2,22 @@
 
 
 function structLen44() {
-    this.offset0        // boolean          // 11B4 //  does it exist
-    this.offset2        // short            // 11B2 //  x index
-    this.offset4        // short            // 11B0 //  y index
-    this.offset6        // short            // 11AE //  direction
-    this.shr11AC        // short            // 11AC //  sprite
-    this.offset10 = 0   // uint16           // 11AA //  description datum
-    this.offset12       // short            // 11A8 //  frame in sequence
-    this.offset14 = 0   // short            // 11A6 //  frame number
-    this.offset16       // Rect             // 11A4 //  frame on screen
-    this.offset24       // Rect             // 119C //          unknown
-    this.lon1194        // long             // offset32//  time last updated
-    this.shr1190        // long             // offset36//  time required to update
-    this.lon118C        // long             // offset40//  speed
-    this.shr1188        // short            //  step in crash
-    this.shr1186        // long             //         //          unknown
-    this.offset44       // long
+    this.offset0 = false                      // boolean          // 11B4 //  does it exist
+    this.offset2 = 0                          // short            // 11B2 //  x index
+    this.offset4 = 0                          // short            // 11B0 //  y index
+    this.offset6 = 0                          // short            // 11AE //  direction
+    this.shr11AC = 0                          // short            // 11AC //  sprite
+    this.offset10 = 0                         // uint16           // 11AA //  description datum
+    this.offset12 = 0                         // short            // 11A8 //  frame in sequence
+    this.offset14 = 0                         // short            // 11A6 //  frame number
+    this.offset16 = new Rect(0, 0, 0, 0);     // Rect             // 11A4 //  frame on screen
+    this.offset24 = new Rect(0, 0, 0, 0)      // Rect             // 119C //          unknown
+    this.lon1194  = 0                         // long             // offset32//  time last updated
+    this.shr1190  = 0                         // long             // offset36//  time required to update
+    this.lon118C  = 0                         // long             // offset40//  speed
+    this.shr1188  = 0                         // short            //  step in crash
+    this.shr1186  = 0                         // long             //         //          unknown
+    this.offset44 = 0                         // long
 };
 
 structLen44.prototype.copy = function() {

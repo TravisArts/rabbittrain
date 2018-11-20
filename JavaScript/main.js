@@ -181,7 +181,7 @@ var glob39 = 1  // dificulty
 
 var glob41 = [] // level tiles  // tiles on the board
 
-var glob45 = 3  // level number
+var glob45 = 0  // level number
 var glob46
 
 var glob47      // the canvas
@@ -264,6 +264,9 @@ var glob191;    // y to close
 var glob192 //= new Rect(0,0,0,0)
 var glob193 //= new Rect(0,0,0,0)
 
+
+var glob142
+var stageTimeout
 
 var glob196     // theme
 
