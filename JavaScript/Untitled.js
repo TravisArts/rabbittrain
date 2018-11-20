@@ -1792,7 +1792,7 @@ function proc54() {
 
     for (var i = 0; i < 9; i++) {
         A5[i].lon1194 = TickCount();
-        A5[1].shr1190 = 0
+        A5[i].shr1190 = 0
     }
     updateInterval = setInterval(update, 1000 / 60);
     glob171 = TickCount() - glob17;
