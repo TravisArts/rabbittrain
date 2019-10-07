@@ -14,12 +14,21 @@ div canvas {
 
 @font-face {
     font-family: "Charcoal";
-    src: url("Charcoal.ttf");
+    src: url("style/fonts/Charcoal.ttf");
     /* src: 
     url("css/fonts/Harabara.woff") format("woff"),
     url("css/fonts/Harabara.otf") format("opentype"),
     url("css/fonts/Harabara.svg#filename") format("svg"); */
 }
+@font-face {
+    font-family: "Teaspoon";
+    src: url("style/fonts/Teaspoon.ttf");
+    /* src: 
+    url("css/fonts/Harabara.woff") format("woff"),
+    url("css/fonts/Harabara.otf") format("opentype"),
+    url("css/fonts/Harabara.svg#filename") format("svg"); */
+}
+
 
 @font-face {
     font-family: 'Icons';
@@ -43,10 +52,6 @@ div canvas {
     text-rendering: optimizeLegibility;
     -webkit-font-smoothing: antialiased;
 }
-
-/* .titleBar {
-
-} */
 
 html,
 body {
@@ -91,6 +96,7 @@ body {
     text-align: center;
     /* position: absolute; */
     width: 100%;
+    position: relative;
 }
 
 #titleBar li {
@@ -112,7 +118,7 @@ body {
     height: 22px;
 }
 
-#sprites {
+#titlebar #sprites {
     float: right;
 }
 
@@ -151,16 +157,20 @@ body {
     display: inline;
     position: absolute;
     left: 0;
+    top: 0;
+    bottom: 0;
     text-align: center;
-    z-index: 2;
+    z-index: 100;
     /* height: 100%; */
     width: 100%;
     /* position: absolute; */
     background-color: red;
 }
 
-#loop span {
-    vertical-align: middle;
+#loop div {
+    position: relative;
+    top: 50%;
+    transform: translateY(-50%)
 }
 
 #leaderboard {
@@ -420,6 +430,7 @@ td:first-child {
         padding: 0;
         height: 44px;
     }
+
     .titleBar {
         font-size: 1em;
     }
@@ -428,7 +439,8 @@ td:first-child {
         height: 32px;
     }
     #lives div img {
-        transform: translate(-64px, -160px);
+        transform: translate(-96px, -128px);
+        /* transform: translate(-64px, -160px); */
         /* clip: rect(160px, 96px, 192px, 64px); */
         /* clip: shape(top, right, bottom, left); NB 'rect' is the only available option */
     }
@@ -499,4 +511,130 @@ button i {
 
 #rushButton i {
     font-size: 36px;
+}
+
+
+#logo {
+    display: none;
+}
+
+@media (prefers-color-scheme: dark) {
+    body {
+        background-color: #004466;
+        font-family: "Teaspoon";
+    }
+    #hiddenCanvas {
+        color: #004466;
+    }
+    #sprites * div img {
+        content:url("Images/Sprites-dark.png");
+    }
+    #sprites * div {
+        width: 32px;
+        height: 32px;
+    }
+    #logo {
+        content:url("Images/Logo-dark.png");
+    }
+
+    .titlebar {
+        background-color: transparent;
+        font-size: 32px;
+    }
+    #titlebar #stage-item,
+    #titlebar #score-item {
+        color: #FFFFFF;
+    }
+    #titlebar #bonus-item {
+        color: #DDDD00;
+    }
+}
+
+@media screen and (max-width: 600px) and (prefers-color-scheme: dark) {
+    #carrots div img {
+        transform: translate(-64px, -128px);
+    }
+}
+
+@media screen and (min-width: 665px) and (prefers-color-scheme: dark) {
+    #logo {
+        display: inline;
+    }
+
+    #container {
+        /* margin-left: auto;
+        margin-right: 0px; */
+        margin: 0;
+        position:relative;
+        right: 0;
+    }
+    .titlebar {
+        /* margin-right: auto; */
+        /* transform: translateY(72px); */
+        /* top: 72px; */
+        top: 55px;
+        height: 400px;
+
+        width: calc(50% - 167.5px);
+        right:0;
+    }
+    #loop {
+        width: 175px;
+    }
+    #titlebar {
+        width: 165px;
+        float:left;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        height: calc(100% - 10px) ;
+        outline-color: #FFF;
+        outline-offset: -1px;
+        outline-width: 1px;
+        outline-style: solid;
+        padding: 5px;
+    }
+
+    #titleBar li {
+        padding: 0;
+    }
+    #titlebar #stage-item,
+    #titlebar #score-item {
+        color: #FFFFFF;
+    }
+    #titlebar #bonus-item {
+        order: 1;
+        color: #DDDD00;
+        
+    }
+    #titlebar #score-item,
+    #titlebar #bonus-item {
+        width: 130px
+    }
+    #titlebar #sprites {
+        float: left;
+        order:3;
+        align-self: flex-end;
+    }
+    #sprites {
+        display: flex;
+        font-size: 0;
+    }
+    #sprites * {
+        float: left;
+        white-space: nowrap;
+    }
+    .flexBox {
+        position: relative;
+        top: 50%;
+        transform: translate(0, -50%);
+    }
+}
+
+.flexBox {
+    margin: 0;
+    display: flex;
+    flex-direction: row-reverse;
+    flex-wrap: wrap;
+
 }

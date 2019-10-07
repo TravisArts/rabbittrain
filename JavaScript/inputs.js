@@ -281,8 +281,8 @@ function proc93() {
 
 
             var rndRect = new Rect(5.5, 79 + 10.5, 155.5, 123 + 10.5)
-            ctx2.fillStyle = "#FFFFFF"
-            ctx2.strokeStyle = "#000000"
+            ctx2.fillStyle = "#FFFFFF"//trackStroke
+            ctx2.strokeStyle = "#000000"//trackFill
             ctx2.lineWidth = 1
             roundRect(ctx2, rndRect, 16, true, true)
 

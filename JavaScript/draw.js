@@ -2,7 +2,7 @@
 function proc58(value, rect) {
 
     // RGBForeColor(&glob22);
-    ctx.strokeStyle = "#FFFFFF"
+    ctx.strokeStyle = trackStroke
     if (glob26) {
         proc59(4, value, rect);
     } else {
@@ -11,7 +11,7 @@ function proc58(value, rect) {
 
 
     // RGBForeColor(&glob21);
-    ctx.strokeStyle = "#161516"
+    ctx.strokeStyle = trackFill//"#161516"
     proc59(2, value, rect);
 
 }
@@ -331,12 +331,10 @@ function proc56(yIndex, xIndex, value, Prect) {
             tileColor = yellow;
         }
 
-        // DrawPicture( pictures[tileColor], &rect);
 
-        // console.log(rect)
         ctx.drawImage(pictures[tileColor], rect.x, rect.y, rect.w, rect.h)
 
-        ctx.strokeStyle = "#A0A3A5"
+        ctx.strokeStyle = tileStroke
         PenSize(1);
 
         ctx.beginPath();
@@ -363,7 +361,7 @@ function proc56(yIndex, xIndex, value, Prect) {
 
         ctx.drawImage(pictures[tileColor], rect.x, rect.y, rect.w, rect.h)
 
-        ctx.strokeStyle = "#A0A3A5"
+        ctx.strokeStyle = tileStroke
         PenSize(1);
         ctx.strokeRect(rect.x, rect.y, rect.w, rect.h);
     }
@@ -607,7 +605,7 @@ function proc102() {
                         if ( A5[i].shr1186 == 5) {
                             A5[0] = A5[i].copy();
                             A5[0].shr1186 = 5;
-                            A5[0].shr11AC = 46;
+                            A5[0].shr11AC = 45; // originally 46
                         }
                     }
                 }
@@ -1013,7 +1011,7 @@ function CopyMask(srcBits, dstBits, srcRect, dstRect, mode, maskRgn) {
             // var datum = data[n] + ", " + data[n+1] + ", " + data[n+2] + ", " + data[n+3]
             // console.log("(x,y) = (" + x + ", " + y + "),   " + datum )
 
-            if (data[n+3] == 0 && data2[n+3] != 0) {
+            if (data[n+3] <= 200 && data2[n+3] != 0) {
                 data[n] = data2[n]
                 data[n+1] = data2[n+1]
                 data[n+2] = data2[n+2]
@@ -1095,7 +1093,35 @@ function proc143() {
     
 }
 
+
 function eraseRect(rect) {
-    ctx.fillStyle = '#FFFFFF'
+    ctx.fillStyle = emptyColor
     ctx.fillRect(rect.x, rect.y, rect.w, rect.h)
+}
+
+
+function redrawTiles() {
+    var rect;
+
+    var L, T, R, B;
+    proc133();
+
+    L = (glob56 - 1) * 32;
+    T = 0;
+    R = glob56 * 32;
+    B = 32;
+
+    rect = new Rect(L, T, R, B)
+    // rect = {x: L, y: T, r: R, b: B }
+    // SetRect( &rect, L, T, R, B);
+
+    glob54 = glob55
+    glob53 = glob52
+
+    while (glob56 > 0) {
+        CopyBits(glob54, glob53, rect, arr1308[glob56], srcCopy, nil);
+        rect.offset(-32, 0)
+        glob56 -= 1
+    }
+    proc134();
 }

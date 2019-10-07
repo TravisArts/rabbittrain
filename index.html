@@ -18,7 +18,8 @@
     <link rel="icon" sizes="72x72" href="icon76.png">
     <link rel="icon" sizes="144x144" href="icon76@2.png">
     <link rel="stylesheet" type="text/css" href="style.css">
-    <link rel="preload" href="Charcoal.ttf" as="font">
+    <link rel="preload" href="style/fonts/Charcoal.ttf" as="font">
+    <link rel="preload" href="style/fonts/Teaspoon.ttf" as="font">
     <link rel="icon" href="Images/favicon.ico" type="image/x-icon">
     <!-- <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"> -->
 
@@ -148,239 +149,250 @@
     </script> -->
 
     <!--Main Body-->
-    <div class="titlebar">
-        <div id="loop" style="display:none;">Loop!!</div>
-        <ul id="titleBar">
-            <li>
-                Stage: <span id="stage"></span>
-            </li>
-            <li>
-                Bonus: <span id="bonus"></span>
-            </li>
-            <li>
-                Score: <span id="score"></span>
-            </li>
-            <li id="sprites" style="float:right;">
-                <span id="carrots">
-                    <div><img src="Images/Sprites.png" class="carrot stat" /></div>
-                    <div><img src="Images/Sprites.png" class="carrot stat" /></div>
-                </span>
-                <span id="lives">
-                    <div><img src="Images/Sprites.png" class="life stat" /></div>
-                    <div><img src="Images/Sprites.png" class="life stat" /></div>
-                    <div><img src="Images/Sprites.png" class="life stat" /></div>
-                    <div><img src="Images/Sprites.png" class="life stat" /></div>
-                    <div><img src="Images/Sprites.png" class="life stat" /></div>
-                </span>
-            </li>
-        </ul>
-    </div>
-
-    <div id="container">
-
-        <div id="controlls">
-
-            <button onclick="newGamePressed()" id="newGame" class="newGame"><i class="icons">new_game</i></button>
-            <div style="position: relative; width: fit-content;">
-                <button onclick="selectDificulty(1)" class="dificulty">Easy</button>
-                <button onclick="selectDificulty(2)" class="dificulty">Medium</button>
-                <button onclick="selectDificulty(3)" class="dificulty">Hard</button>
+    <div class="flexBox">
+        <div class="titlebar">
+            <div id="loop" style="display:none;">
+                <div>
+                    Loop!!
+                </div>
             </div>
-            <!-- <select name="dificulty" id="dificultySelector" onchange="selectDificulty()" onfocus="selectorActive()">
-                <option value="1">Easy</option>
-                <option value="2">Medium</option>
-                <option value="3">Hard</option>
-            </select> -->
-            <!-- <button onclick="showHighScores()"><i class="icons">trophy</i></button> -->
-            <button onclick="togglePause()"><i class="icons" id="pause">pause</i></button>
-            <button onclick="muteButtonPress()"><i class="icons" id="muteIcon"></i></button>
-            <button onclick="musicButtonPress()"><i class="icons" id="musicIcon"></i></button>
-
+            <ul id="titleBar">
+                <li>
+                    <img src="Images/Logo.png" id="logo"/>
+                </li>
+                <li id="stage-item">
+                    Stage: <span id="stage">000</span>
+                </li>
+                <li id="bonus-item">
+                    Bonus: <span id="bonus">000</span>
+                </li>
+                <li id="score-item">
+                    Score: <span id="score">000</span>
+                </li>
+                <li id="sprites" >
+                    <span id="carrots">
+                        <div><img src="Images/Sprites.png" class="carrot stat" /></div>
+                        <div><img src="Images/Sprites.png" class="carrot stat" /></div>
+                    </span>
+                    <span id="lives">
+                        <div><img src="Images/Sprites.png" class="life stat" /></div>
+                        <div><img src="Images/Sprites.png" class="life stat" /></div>
+                        <div><img src="Images/Sprites.png" class="life stat" /></div>
+                        <div><img src="Images/Sprites.png" class="life stat" /></div>
+                        <div><img src="Images/Sprites.png" class="life stat" /></div>
+                    </span>
+                </li>
+            </ul>
         </div>
-        <br>
-        <canvas id="hiddenCanvas" style="border:1px solid #000000;"></canvas>
-        <div id="canvas2div">
-            <canvas id="canvas2" style="border:1px solid #000000;"></canvas>
-        </div>
-        <div class="hidden">
-            <canvas id="myCanvas" style="border:1px solid #000000;max-width:100%;"></canvas>
-            <canvas id="rabbitCanvas" style="border:1px solid #000000;"></canvas>
-            <canvas id="spriteCanvas" style="border:1px solid #000000;"></canvas>
-        </div>
-        <br>
-        <br>
-        <div id="leaderboard">
-            <img src="Images/Hi-Score2.png" class="HS2" />
-            <img src="Images/Hi-Score2.png" class="HS2" />
-            <img src="Images/Hi-Score2.png" class="HS2" />
-            <img src="Images/Hi-Score2.png" class="HS2" />
-            <div id="score_title" style="">Best 10</div>
-            <img src="Images/Hi-Score1.png" class="HS1" />
-            <img src="Images/Hi-Score1.png" class="HS1" />
-            <img src="Images/Hi-Score1.png" class="HS1" />
-            <img src="Images/Hi-Score1.png" class="HS1" />
 
-            <table id="score_table">
-                <tr>
-                    <th></th>
-                    <th class="hsh_score">score</th>
-                    <th class="hsh_stage">stage</th>
-                    <th class="hsh_name">name</th>
-                    <th class="hsh_date">date</th>
-                    <th class="hsh_time">time</th>
-                </tr>
-                <tr>
-                    <td>1</td>
-                    <td class="hs_score"></td>
-                    <td class="hs_stage">–</td>
-                    <td class="hs_name">––</td>
-                    <td class="hs_date">–</td>
-                    <td class="hs_time">–</td>
-                </tr>
-                <tr>
-                    <td>2</td>
-                    <td class="hs_score"></td>
-                    <td class="hs_stage">–</td>
-                    <td class="hs_name">––</td>
-                    <td class="hs_date">–</td>
-                    <td class="hs_time">–</td>
-                </tr>
-                <tr>
-                    <td>3</td>
-                    <td class="hs_score"></td>
-                    <td class="hs_stage">–</td>
-                    <td class="hs_name">––</td>
-                    <td class="hs_date">–</td>
-                    <td class="hs_time">–</td>
-                </tr>
-                <tr>
-                    <td>4</td>
-                    <td class="hs_score"></td>
-                    <td class="hs_stage">–</td>
-                    <td class="hs_name">––</td>
-                    <td class="hs_date">–</td>
-                    <td class="hs_time">–</td>
-                </tr>
-                <tr>
-                    <td>5</td>
-                    <td class="hs_score"></td>
-                    <td class="hs_stage">–</td>
-                    <td class="hs_name">––</td>
-                    <td class="hs_date">–</td>
-                    <td class="hs_time">–</td>
-                </tr>
-                <tr>
-                    <td>6</td>
-                    <td class="hs_score"></td>
-                    <td class="hs_stage">–</td>
-                    <td class="hs_name">––</td>
-                    <td class="hs_date">–</td>
-                    <td class="hs_time">–</td>
-                </tr>
-                <tr>
-                    <td>7</td>
-                    <td class="hs_score"></td>
-                    <td class="hs_stage">–</td>
-                    <td class="hs_name">––</td>
-                    <td class="hs_date">–</td>
-                    <td class="hs_time">–</td>
-                </tr>
-                <tr>
-                    <td>8</td>
-                    <td class="hs_score"></td>
-                    <td class="hs_stage">–</td>
-                    <td class="hs_name">––</td>
-                    <td class="hs_date">–</td>
-                    <td class="hs_time">–</td>
-                </tr>
-                <tr>
-                    <td>9</td>
-                    <td class="hs_score"></td>
-                    <td class="hs_stage">–</td>
-                    <td class="hs_name">––</td>
-                    <td class="hs_date">–</td>
-                    <td class="hs_time">–</td>
-                </tr>
-                <tr>
-                    <td>10</td>
-                    <td class="hs_score"></td>
-                    <td class="hs_stage">–</td>
-                    <td class="hs_name">––</td>
-                    <td class="hs_date">–</td>
-                    <td class="hs_time">–</td>
-                </tr>
-            </table>
+        <div id="container">
 
-            <div style="position:absolute;top:280px;left:98px;height:19px;">game type:
-                <select name="dificulty" id="scoreDificultySelector" onchange="scoreDificulty()">
+            <div id="controlls">
+
+                <button onclick="newGamePressed()" id="newGame" class="newGame"><i class="icons">new_game</i></button>
+                <div style="position: relative; width: fit-content;">
+                    <button onclick="selectDificulty(1)" class="dificulty">Easy</button>
+                    <button onclick="selectDificulty(2)" class="dificulty">Medium</button>
+                    <button onclick="selectDificulty(3)" class="dificulty">Hard</button>
+                </div>
+                <!-- <select name="dificulty" id="dificultySelector" onchange="selectDificulty()" onfocus="selectorActive()">
                     <option value="1">Easy</option>
                     <option value="2">Medium</option>
                     <option value="3">Hard</option>
-                </select>
-                <button id="closeScore" onclick="dismissScores()">OK</button>
-            </div>
-        </div>
+                </select> -->
+                <!-- <button onclick="showHighScores()"><i class="icons">trophy</i></button> -->
+                <button onclick="togglePause()"><i class="icons" id="pause">pause</i></button>
+                <button onclick="muteButtonPress()"><i class="icons" id="muteIcon"></i></button>
+                <button onclick="musicButtonPress()"><i class="icons" id="musicIcon"></i></button>
 
-        <div id="scoreModal">
-            <div class="modalHeader">
-                Game Over
             </div>
-            <div class="modalBody">
-                <p>On <span id="mDificulty"></span>, you made it to level <span id="mLevel"></span> with a score
-                    of
-                    <span id="mScore"></span>.<br>
-                </p>
-                <p>
-                    would you like to share you're score?
-                </p>
+            <br>
+            <canvas id="hiddenCanvas" style="border:1px solid #000000;"></canvas>
+            <div id="canvas2div">
+                <canvas id="canvas2" style="border:1px solid #000000;"></canvas>
             </div>
-            <div class="modalFooter">
-                <!-- <div class="fb-login-button" data-max-rows="1" data-size="medium" data-button-type="login_with"
-                    data-show-faces="false" data-auto-logout-link="false" data-use-continue-as="false"></div>
-                <button id="facebookLoginButton" onclick="facebookLogin()" style="display:none;">Login with Facebook</button> -->
-                <button id="facebookShareButton" onclick="facebookShare()">
-                    <span class="FBLogo">
-                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" class="_1pbq" style="width: 16px; height: 16px;"
-                            color="#ffffff">
-                            <path fill="#ffffff" fill-rule="evenodd" d="M8 14H3.667C2.733 13.9 2 13.167 2 12.233V3.667A1.65 1.65 0 0 1
-                            3.667 2h8.666A1.65 1.65 0 0 1 14 3.667v8.566c0 .934-.733
-                            1.667-1.667
-                            1.767H10v-3.967h1.3l.7-2.066h-2V6.933c0-.466.167-.9.867-.9H12v-1.8c.033
-                            0-.933-.266-1.533-.266-1.267 0-2.434.7-2.467
-                            2.133v1.867H6v2.066h2V14z"></path>
-                        </svg>
-                        <!-- <img class="_1pbs inlineBlock img" src="https://static.xx.fbcdn.net/rsrc.php/v3/yP/r/Wq8eKb91kes.png" style="display:none;" alt="" width="16" height="16"> -->
-                    </span>
-                    <span class="FBLogo">
-                        Share with Facebook
-                    </span>
-                </button>
-                <button onclick="closeScore()">Close</button>
+            <div class="hidden">
+                <canvas id="myCanvas" style="border:1px solid #000000;max-width:100%;"></canvas>
+                <canvas id="rabbitCanvas" style="border:1px solid #000000;"></canvas>
+                <canvas id="spriteCanvas" style="border:1px solid #000000;"></canvas>
             </div>
-        </div>
-        <div style=" text-align:
-                    center;">
-            <button id="rushButton"><i class="icons">fast_forward</i></button>
-        </div>
-        <br>
-        <br>
-        <div id="social">
-            <!-- <div class="fb-like" data-href="https://developers.facebook.com/docs/plugins/" data-layout="button_count"
-                data-action="like" data-size="large" data-show-faces="true" data-share="true"></div> -->
-            <!-- <div class="fb-share-button" data-href="https://travisarts.github.io/rabbittrain/" data-layout="button"
-                data-size="large" data-mobile-iframe="true"><a target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Ftravisarts.github.io%2Frabbittrain%2F&amp;src=sdkpreparse"
-                    class="fb-xfbml-parse-ignore">Share</a></div> -->
-            <iframe src="https://www.facebook.com/plugins/share_button.php?href=https%3A%2F%2Ftravisarts.github.io%2Frabbittrain%2F&layout=button&size=large&mobile_iframe=true&appId=1922117394546392&width=73&height=28"
-                width="73" height="28" style="border:none;overflow:hidden" scrolling="no" frameborder="0"
-                allowTransparency="true" allow="encrypted-media"></iframe>
+            <br>
+            <br>
+            <div id="leaderboard">
+                <img src="Images/Hi-Score2.png" class="HS2" />
+                <img src="Images/Hi-Score2.png" class="HS2" />
+                <img src="Images/Hi-Score2.png" class="HS2" />
+                <img src="Images/Hi-Score2.png" class="HS2" />
+                <div id="score_title" style="">Best 10</div>
+                <img src="Images/Hi-Score1.png" class="HS1" />
+                <img src="Images/Hi-Score1.png" class="HS1" />
+                <img src="Images/Hi-Score1.png" class="HS1" />
+                <img src="Images/Hi-Score1.png" class="HS1" />
 
-            <a href="https://twitter.com/share?ref_src=twsrc%5Etfw" class="twitter-share-button" data-size="large"
-                data-text="Check out Go!Go! Bunny Train. Try to get the carrot, but don&#39;t crash" data-hashtags="rabbittrain"
-                data-show-count="false">Tweet</a>
-            <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
-        </div>
+                <table id="score_table">
+                    <tr>
+                        <th></th>
+                        <th class="hsh_score">score</th>
+                        <th class="hsh_stage">stage</th>
+                        <th class="hsh_name">name</th>
+                        <th class="hsh_date">date</th>
+                        <th class="hsh_time">time</th>
+                    </tr>
+                    <tr>
+                        <td>1</td>
+                        <td class="hs_score"></td>
+                        <td class="hs_stage">–</td>
+                        <td class="hs_name">––</td>
+                        <td class="hs_date">–</td>
+                        <td class="hs_time">–</td>
+                    </tr>
+                    <tr>
+                        <td>2</td>
+                        <td class="hs_score"></td>
+                        <td class="hs_stage">–</td>
+                        <td class="hs_name">––</td>
+                        <td class="hs_date">–</td>
+                        <td class="hs_time">–</td>
+                    </tr>
+                    <tr>
+                        <td>3</td>
+                        <td class="hs_score"></td>
+                        <td class="hs_stage">–</td>
+                        <td class="hs_name">––</td>
+                        <td class="hs_date">–</td>
+                        <td class="hs_time">–</td>
+                    </tr>
+                    <tr>
+                        <td>4</td>
+                        <td class="hs_score"></td>
+                        <td class="hs_stage">–</td>
+                        <td class="hs_name">––</td>
+                        <td class="hs_date">–</td>
+                        <td class="hs_time">–</td>
+                    </tr>
+                    <tr>
+                        <td>5</td>
+                        <td class="hs_score"></td>
+                        <td class="hs_stage">–</td>
+                        <td class="hs_name">––</td>
+                        <td class="hs_date">–</td>
+                        <td class="hs_time">–</td>
+                    </tr>
+                    <tr>
+                        <td>6</td>
+                        <td class="hs_score"></td>
+                        <td class="hs_stage">–</td>
+                        <td class="hs_name">––</td>
+                        <td class="hs_date">–</td>
+                        <td class="hs_time">–</td>
+                    </tr>
+                    <tr>
+                        <td>7</td>
+                        <td class="hs_score"></td>
+                        <td class="hs_stage">–</td>
+                        <td class="hs_name">––</td>
+                        <td class="hs_date">–</td>
+                        <td class="hs_time">–</td>
+                    </tr>
+                    <tr>
+                        <td>8</td>
+                        <td class="hs_score"></td>
+                        <td class="hs_stage">–</td>
+                        <td class="hs_name">––</td>
+                        <td class="hs_date">–</td>
+                        <td class="hs_time">–</td>
+                    </tr>
+                    <tr>
+                        <td>9</td>
+                        <td class="hs_score"></td>
+                        <td class="hs_stage">–</td>
+                        <td class="hs_name">––</td>
+                        <td class="hs_date">–</td>
+                        <td class="hs_time">–</td>
+                    </tr>
+                    <tr>
+                        <td>10</td>
+                        <td class="hs_score"></td>
+                        <td class="hs_stage">–</td>
+                        <td class="hs_name">––</td>
+                        <td class="hs_date">–</td>
+                        <td class="hs_time">–</td>
+                    </tr>
+                </table>
 
+                <div style="position:absolute;top:280px;left:98px;height:19px;">game type:
+                    <select name="dificulty" id="scoreDificultySelector" onchange="scoreDificulty()">
+                        <option value="1">Easy</option>
+                        <option value="2">Medium</option>
+                        <option value="3">Hard</option>
+                    </select>
+                    <button id="closeScore" onclick="dismissScores()">OK</button>
+                </div>
+            </div>
+
+            <div id="scoreModal">
+                <div class="modalHeader">
+                    Game Over
+                </div>
+                <div class="modalBody">
+                    <p>On <span id="mDificulty"></span>, you made it to level <span id="mLevel"></span> with a score
+                        of
+                        <span id="mScore"></span>.<br>
+                    </p>
+                    <p>
+                        would you like to share you're score?
+                    </p>
+                </div>
+                <div class="modalFooter">
+                    <!-- <div class="fb-login-button" data-max-rows="1" data-size="medium" data-button-type="login_with"
+                        data-show-faces="false" data-auto-logout-link="false" data-use-continue-as="false"></div>
+                    <button id="facebookLoginButton" onclick="facebookLogin()" style="display:none;">Login with Facebook</button> -->
+                    <button id="facebookShareButton" onclick="facebookShare()">
+                        <span class="FBLogo">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" class="_1pbq" style="width: 16px; height: 16px;"
+                                color="#ffffff">
+                                <path fill="#ffffff" fill-rule="evenodd" d="M8 14H3.667C2.733 13.9 2 13.167 2 12.233V3.667A1.65 1.65 0 0 1
+                                3.667 2h8.666A1.65 1.65 0 0 1 14 3.667v8.566c0 .934-.733
+                                1.667-1.667
+                                1.767H10v-3.967h1.3l.7-2.066h-2V6.933c0-.466.167-.9.867-.9H12v-1.8c.033
+                                0-.933-.266-1.533-.266-1.267 0-2.434.7-2.467
+                                2.133v1.867H6v2.066h2V14z"></path>
+                            </svg>
+                            <!-- <img class="_1pbs inlineBlock img" src="https://static.xx.fbcdn.net/rsrc.php/v3/yP/r/Wq8eKb91kes.png" style="display:none;" alt="" width="16" height="16"> -->
+                        </span>
+                        <span class="FBLogo">
+                            Share with Facebook
+                        </span>
+                    </button>
+                    <button onclick="closeScore()">Close</button>
+                </div>
+            </div>
+            <div style=" text-align:
+                        center;">
+                <button id="rushButton"><i class="icons">fast_forward</i></button>
+            </div>
+            <br>
+            <br>
+            <div id="social">
+                <!-- <div class="fb-like" data-href="https://developers.facebook.com/docs/plugins/" data-layout="button_count"
+                    data-action="like" data-size="large" data-show-faces="true" data-share="true"></div> -->
+                <!-- <div class="fb-share-button" data-href="https://travisarts.github.io/rabbittrain/" data-layout="button"
+                    data-size="large" data-mobile-iframe="true"><a target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Ftravisarts.github.io%2Frabbittrain%2F&amp;src=sdkpreparse"
+                        class="fb-xfbml-parse-ignore">Share</a></div> -->
+                <iframe src="https://www.facebook.com/plugins/share_button.php?href=https%3A%2F%2Ftravisarts.github.io%2Frabbittrain%2F&layout=button&size=large&mobile_iframe=true&appId=1922117394546392&width=73&height=28"
+                    width="73" height="28" style="border:none;overflow:hidden" scrolling="no" frameborder="0"
+                    allowTransparency="true" allow="encrypted-media"></iframe>
+
+                <a href="https://twitter.com/share?ref_src=twsrc%5Etfw" class="twitter-share-button" data-size="large"
+                    data-text="Check out Go!Go! Bunny Train. Try to get the carrot, but don&#39;t crash" data-hashtags="rabbittrain"
+                    data-show-count="false">Tweet</a>
+                <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+            </div>
+
+        </div>
     </div>
+
+
 </body>
 
 </html>

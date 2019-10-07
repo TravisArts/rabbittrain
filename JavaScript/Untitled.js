@@ -20,6 +20,88 @@ let pictures = [
     edgeClosedImage
 ]
 
+
+var trackStroke
+var trackFill
+var tileStroke
+var emptyColor
+
+function setColorScheme() {
+    const isDarkMode = window.matchMedia("(prefers-color-scheme: dark)").matches
+    window.matchMedia("(prefers-color-scheme: dark)").addListener(e => e.matches && activateDarkMode())
+    window.matchMedia("(prefers-color-scheme: light)").addListener(e => e.matches && activateLightMode())
+    if(isDarkMode){
+        activateDarkMode()
+    } else {
+        activateLightMode()
+    }
+}
+
+function activateLightMode() {
+    console.log("going light")
+
+    trackStroke = "#FFFFFF"
+    trackFill   = "#161516"
+    tileStroke  = "#A0A3A5"
+    emptyColor  = "#FFFFFF"
+    setupResources()
+    if (loaded) {
+        setupCharacterCanvas()
+        redrawTiles()
+        proc57()
+    }
+}
+
+function activateDarkMode() {
+    console.log("going dark")
+
+    trackStroke = "#004466"
+    trackFill   = "#9966ff"
+    tileStroke  = "#66ff88"
+    emptyColor  = "#004466"
+
+
+    edgeClosedImage.src = 'Images/Edge-dark.png';
+    edgeOpenImage.src = 'Images/Edge-dark.png';
+    tileBlueImage.src = 'Images/TileBlue-dark.png';
+    tileGreenImage.src = 'Images/TileGreen-dark.png';
+    tilePinkImage.src = 'Images/TilePink-dark.png';
+    tileYellowImage.src = 'Images/TileYellow-dark.png';
+
+    stage.src = 'Images/stage.png'
+    opening.src = 'Images/opening.png'
+    character.src = 'Images/Sprites-dark.png'
+
+
+    ion.sound({
+        sounds: [
+            { name: "thema short" },
+            { name: "thema full" },
+            { name: "congraturation" },
+            { name: "panel move" },
+            { name: "station" },
+            { name: "carrot" },
+            { name: "crash" },
+            { name: "loop" },
+            { name: "gen dog" }
+        ],
+
+        // main config
+        path: "Sound/",
+        preload: true,
+        multiplay: true,
+        volume: 1 //0.9
+    });
+
+    loadSettings()
+
+    if (loaded) {
+        setupCharacterCanvas()
+        redrawTiles()
+        proc57()
+    }
+}
+
 function setupResources() {
     edgeClosedImage.src = 'Images/EdgeClosed.png';
     edgeOpenImage.src = 'Images/EdgeOpen.png';
@@ -61,16 +143,14 @@ document.addEventListener("readystatechange", function () {
     if (document.readyState === "interactive") {
         //dom is ready, window.onload fires later
         document.removeEventListener("readystatechange", this)
-        setupResources()
-        // for (var i = 0; i < 9; i++) {
-        //     A5[i] = new structLen44()
-        // } 
+        setColorScheme()
     }
 })
 
+var loaded = false
 
 window.onload = function () {
-
+    loaded = true
 
     loadTime = new Date().getTime()
 
@@ -88,11 +168,7 @@ window.onload = function () {
     glob180 = document.getElementById("spriteCanvas")
     glob181 = glob180.getContext("2d")
 
-    glob180.style.width = character.width
-    glob180.style.height = character.height
-    glob180.width = character.width
-    glob180.height = character.height
-    glob181.drawImage(character, 0, 0, character.width, character.height)
+    setupCharacterCanvas()
 
     glob55b.style.width = 512
     glob55b.style.height = 32
@@ -107,6 +183,14 @@ window.onload = function () {
     checkLoginState()
 
 };
+
+function setupCharacterCanvas() {
+    glob180.style.width = character.width
+    glob180.style.height = character.height
+    glob180.width = character.width
+    glob180.height = character.height
+    glob181.drawImage(character, 0, 0, character.width, character.height)
+}
 
 function setup() {
     // randomizeLayout()
@@ -555,7 +639,7 @@ function proc79() {
 
 
     var rndRect = new Rect(5.5, 79 + 10.5, 155.5, 123 + 10.5)
-    ctx2.fillStyle = "#FFFFFF"
+    ctx2.fillStyle = "#FFFFFF"//emptyColor
     ctx2.strokeStyle = "#000000"
     ctx2.lineWidth = 1
     roundRect(ctx2, rndRect, 16, true, true)
